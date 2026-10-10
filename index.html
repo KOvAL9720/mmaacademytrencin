@@ -87,6 +87,10 @@ p{margin:0}
 .marquee{background:var(--accent);overflow:hidden;padding:18px 0;font-family:var(--display);font-size:26px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
 .marquee-track{display:flex;width:max-content}
 .marquee-track>div{display:flex;align-items:center;gap:44px;padding-right:44px}
+.marquee a{color:#FFFFFF;text-decoration:none;background:linear-gradient(currentColor,currentColor) left bottom/0 3px no-repeat;transition:background-size .25s ease}
+.marquee a:hover{color:#FFFFFF;background-size:100% 3px}
+.marquee a:focus-visible{outline-offset:6px}
+.marquee:focus-within .marquee-track{animation-play-state:paused}
 .marquee-track i{width:10px;height:10px;background:#FFFFFF;transform:rotate(45deg)}
 
 /* Cards */
@@ -169,7 +173,7 @@ html{scroll-behavior:smooth}
 .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.3s}.d4{animation-delay:.45s}
 .hero-photo{animation:wipe .9s .25s cubic-bezier(.2,.7,.2,1) both}
 .line-grow{transform-origin:left;animation:lineGrow .6s .4s ease both}
-.marquee-track{animation:marquee 26s linear infinite}
+.marquee-track{animation:marquee 66s linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
 @supports (animation-timeline:view()){
 .reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 5% cover 24%}
@@ -222,10 +226,12 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FF
 </section>
 
 <!-- PÁS DISCIPLÍN -->
-<div class="marquee">
+<nav class="marquee" aria-label="Disciplíny">
 <div class="marquee-track">
-<div><span>MMA</span><i aria-hidden="true"></i><span>Grappling</span><i aria-hidden="true"></i><span>Wrestling</span><i aria-hidden="true"></i><span>Youth</span><i aria-hidden="true"></i><span>Trenčín</span><i aria-hidden="true"></i><span>Prvý tréning</span><i aria-hidden="true"></i></div>
-<div aria-hidden="true"><span>MMA</span><i></i><span>Grappling</span><i></i><span>Wrestling</span><i></i><span>Youth</span><i></i><span>Trenčín</span><i></i><span>Prvý tréning</span><i></i></div>
+<div><a href="#rozvrh" data-filter="mma">MMA</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap">Grappling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap">Wrestling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="youth">Youth</a><i aria-hidden="true"></i><a href="#kontakt">Trenčín</a><i aria-hidden="true"></i><span aria-hidden="true" style="display:contents"><a href="#rozvrh" data-filter="mma" tabindex="-1">MMA</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Grappling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Wrestling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="youth" tabindex="-1">Youth</a><i aria-hidden="true"></i><a href="#kontakt" tabindex="-1">Trenčín</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="mma" tabindex="-1">MMA</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Grappling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Wrestling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="youth" tabindex="-1">Youth</a><i aria-hidden="true"></i><a href="#kontakt" tabindex="-1">Trenčín</a><i aria-hidden="true"></i></span></div>
+<div aria-hidden="true"><a href="#rozvrh" data-filter="mma" tabindex="-1">MMA</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Grappling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Wrestling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="youth" tabindex="-1">Youth</a><i aria-hidden="true"></i><a href="#kontakt" tabindex="-1">Trenčín</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="mma" tabindex="-1">MMA</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Grappling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Wrestling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="youth" tabindex="-1">Youth</a><i aria-hidden="true"></i><a href="#kontakt" tabindex="-1">Trenčín</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="mma" tabindex="-1">MMA</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Grappling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Wrestling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="youth" tabindex="-1">Youth</a><i aria-hidden="true"></i><a href="#kontakt" tabindex="-1">Trenčín</a><i aria-hidden="true"></i></div>
+</div>
+</nav>
 </div>
 </div>
 
@@ -493,6 +499,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FF
     dEl.replaceChildren(frag);
   }
   render();
+  document.querySelectorAll('.marquee a[data-filter]').forEach(function (a) {
+    a.addEventListener('click', function () { cur = a.getAttribute('data-filter'); render(); });
+  });
   var form = document.getElementById('lead'), status = document.getElementById('lead-status');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
