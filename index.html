@@ -80,7 +80,8 @@ p{margin:0}
 .hero h1{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(56px,9vw,124px);line-height:.95;text-transform:uppercase;letter-spacing:.01em}
 .hero-sub{font-size:21px;color:var(--muted);max-width:520px}
 .actions{display:flex;flex-wrap:wrap;gap:12px}
-.hero-photo{flex:1 1 380px;min-width:0;height:560px;padding:24px;font-size:18px}
+.hero-photo{flex:1 1 380px;min-width:0;height:560px;width:100%;object-fit:cover;display:block;background:#17171A}
+.gallery-img{width:100%;height:280px;object-fit:cover;display:block;background:#17171A}
 
 /* Marquee */
 .marquee{background:var(--accent);overflow:hidden;padding:18px 0;font-family:var(--display);font-size:26px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
@@ -217,7 +218,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FF
 </div>
 <p style="font-weight:600">Prvý tréning na skúšku bez záväzkov</p>
 </div>
-<div class="hero-photo ph">Foto: víťazný moment zápasníka v klietke<span class="ph-tag">[doplní klient]</span></div>
+<img class="hero-photo" src="assets/foto/hero-klietka.webp" width="1100" height="1400" fetchpriority="high" alt="Zápasníci MMA počas zápasu v klietke">
 </section>
 
 <!-- PÁS DISCIPLÍN -->
@@ -347,10 +348,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FF
 <h2 class="reveal title" style="margin-bottom:12px">Z tréningov a zápasov</h2>
 <p class="muted" style="margin-bottom:40px">Viac nájdeš na Instagrame <a href="https://www.instagram.com/mma.academy.trencin" rel="noopener">@mma.academy.trencin</a>.</p>
 <div class="reveal grid" style="--min:240px;--gap:12px">
-<div class="ph" style="height:280px;background:var(--ground)">Foto: zápas v klietke<span class="ph-tag">[doplní klient]</span></div>
-<div class="ph" style="height:280px;background:var(--ground)">Foto: tréning grapplingu<span class="ph-tag">[doplní klient]</span></div>
-<div class="ph" style="height:280px;background:var(--ground)">Foto: poháre a trofeje<span class="ph-tag">[doplní klient]</span></div>
-<div class="ph" style="height:280px;background:var(--ground)">Foto: Youth tréning<span class="ph-tag">[doplní klient]</span></div>
+<img class="gallery-img" src="assets/foto/galeria-klietka.webp" width="720" height="720" loading="lazy" decoding="async" alt="Zápas MMA v klietke">
+<img class="gallery-img" src="assets/foto/galeria-grappling.webp" width="720" height="720" loading="lazy" decoding="async" alt="Tréning grapplingu na žinenke">
+<img class="gallery-img" src="assets/foto/galeria-trofeje.webp" width="720" height="720" loading="lazy" decoding="async" alt="Poháre a trofeje zo súťaží">
+<img class="gallery-img" src="assets/foto/galeria-youth.webp" width="720" height="720" loading="lazy" decoding="async" alt="Deti na tréningu bojových umení">
 </div>
 </section>
 
@@ -446,7 +447,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FF
 <!-- PÄTA -->
 <footer class="site-foot">
 <div class="wrap">
-<span>© 2026 MMA Academy Trenčín</span>
+<span>© 2026 MMA Academy Trenčín · Ilustračné fotky: <a href="https://unsplash.com" rel="noopener" style="color:inherit">Unsplash</a></span>
 <span>Gen. M. R. Štefánika 391/10, Trenčín · 0911 283 418</span>
 </div>
 </footer>
