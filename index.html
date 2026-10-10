@@ -23,6 +23,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SportsActivityLocation","name":"MMA Academy Trenčín","description":"Tréningy MMA, grapplingu a wrestlingu pre dospelých aj mládež.","telephone":"+421911283418","address":{"@type":"PostalAddress","streetAddress":"Gen. M. R. Štefánika 391/10","addressLocality":"Trenčín","addressCountry":"SK"},"sameAs":["https://www.instagram.com/mma.academy.trencin"]}
 </script>
+<script>if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('js');</script>
 <style>
 /* Layout: dark page, 1200px column, crimson→navy gradient panels, rounded glass cards, pill buttons (style inspired by americancombatgym.com). */
 :root{--bg:#0A0A0A;--surface:#141414;--surface-2:#1B1B1D;--line:rgba(255,255,255,.1);--ink:#F2F2F2;--muted:rgba(255,255,255,.72);--muted-2:rgba(255,255,255,.55);
@@ -31,12 +32,21 @@
 *,*::before,*::after{box-sizing:border-box}
 html,body{overflow-x:clip}
 html{scroll-padding-top:90px}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;font-weight:400}
+body{margin:0;background:var(--bg);isolation:isolate;color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;font-weight:400}
 img{max-width:100%;display:block}
 h1,h2,h3{margin:0;font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.06em;line-height:1;text-wrap:balance;overflow-wrap:break-word}
 p{margin:0}
 a{color:#FFFFFF}
 summary{cursor:pointer}
+
+/* Floating background shapes */
+.shapes{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.shapes i{position:absolute;border-radius:50%;background:radial-gradient(circle,var(--red) 0%,rgba(208,33,61,0) 70%);opacity:.16;filter:blur(20px)}
+.shapes i:nth-child(1){width:46vw;height:46vw;top:-10vw;left:-12vw}
+.shapes i:nth-child(2){width:30vw;height:30vw;top:30vh;right:-8vw;background:radial-gradient(circle,#2A4C9A 0%,rgba(42,76,154,0) 70%);animation-delay:-5s}
+.shapes i:nth-child(3){width:22vw;height:22vw;bottom:8vh;left:12vw;animation-delay:-10s}
+.shapes i:nth-child(4){width:36vw;height:36vw;bottom:-14vw;right:16vw;background:radial-gradient(circle,#5A1A45 0%,rgba(90,26,69,0) 70%);animation-delay:-15s}
+main,.site-foot{position:relative}
 
 /* Building blocks */
 .wrap{max-width:1200px;margin:0 auto;padding-left:24px;padding-right:24px}
@@ -77,7 +87,12 @@ summary{cursor:pointer}
 
 /* Header */
 .site-head{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(10,10,10,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:84px}
+.site-head{transition:box-shadow .3s ease,background .3s ease}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:84px;transition:min-height .3s ease}
+.site-head.scrolled{box-shadow:0 10px 30px rgba(0,0,0,.55);background:rgba(10,10,10,.97)}
+.site-head.scrolled .wrap{min-height:68px}
+.brand img{transition:width .3s ease,height .3s ease}
+.site-head.scrolled .brand img{width:46px;height:46px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
 .brand img{width:56px;height:56px;border-radius:50%}
 .brand span{font-family:var(--display);font-weight:600;font-size:24px;letter-spacing:.06em;text-transform:uppercase;line-height:1}
@@ -100,7 +115,10 @@ summary{cursor:pointer}
 .hero-wrap{padding-top:28px}
 .hero{position:relative;isolation:isolate;overflow:hidden;border-radius:24px;padding:88px 28px 72px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:28px;border:1px solid var(--line)}
 .hero-bg{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center 30%}
-.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(135deg,rgba(14,35,80,.93) 0%,rgba(40,18,52,.86) 50%,rgba(142,22,48,.9) 100%)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(135deg,rgba(14,35,80,.93) 0%,rgba(40,18,52,.86) 25%,rgba(142,22,48,.9) 50%,rgba(40,18,52,.86) 75%,rgba(14,35,80,.93) 100%);background-size:300% 300%}
+.scroll-hint{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:8px;font-size:11px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted-2);text-decoration:none}
+.scroll-hint span{width:24px;height:38px;border:2px solid rgba(255,255,255,.35);border-radius:12px;position:relative}
+.scroll-hint span::after{content:"";position:absolute;left:50%;top:7px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:#FFFFFF}
 .hero h1{font-size:clamp(58px,9.5vw,112px);line-height:.92;letter-spacing:.04em}
 .hero h1 span{color:var(--red);text-shadow:0 0 34px rgba(208,33,61,.55)}
 .hero-sub{max-width:640px;font-size:clamp(18px,2.2vw,22px);font-weight:300;color:rgba(255,255,255,.9)}
@@ -133,6 +151,10 @@ summary{cursor:pointer}
 .disc-img .badge{position:absolute;left:16px;bottom:16px;z-index:1;font-size:12px;padding:6px 13px}
 .disc-ico{position:absolute;right:16px;top:16px;z-index:1;width:46px;height:46px;border-radius:12px;background:var(--grad);display:grid;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.35)}
 .disc-ico svg{width:24px;height:24px}
+.disc-ico{transition:transform .3s ease}
+.card:hover .disc-ico{transform:rotate(-8deg) scale(1.1)}
+.stat{transition:transform .4s cubic-bezier(.4,0,.2,1),background .4s ease}
+.stat:hover{transform:translateY(-5px);background:rgba(255,255,255,.12)}
 .disc-body{padding:24px 26px 28px;display:flex;flex-direction:column;gap:14px;flex:1}
 .disc-body h3{font-size:34px}
 .disc-body p{color:var(--muted);font-weight:300}
@@ -238,11 +260,11 @@ summary{cursor:pointer}
 @media (max-width:900px){.contact{grid-template-columns:1fr}.lead-form{padding:28px 22px}}
 
 /* Final CTA */
-.cta{position:relative;overflow:hidden;border-radius:24px;padding:88px 28px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.14),transparent 42%),linear-gradient(135deg,#A0182F 0%,var(--red) 45%,#5A1A45 75%,var(--navy) 100%)}
+.cta{position:relative;overflow:hidden;border-radius:24px;padding:88px 28px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.14),transparent 42%),linear-gradient(135deg,#A0182F 0%,var(--red) 22%,#5A1A45 38%,var(--navy) 50%,#5A1A45 62%,var(--red) 78%,#A0182F 100%);background-size:100% 100%,300% 300%}
 .cta h2{font-size:clamp(46px,7vw,84px)}
 .cta p{max-width:560px;font-size:20px;font-weight:300}
 .cta .badge{background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.3)}
-.cta .btn-fill{background:#FFFFFF;color:var(--red-2);box-shadow:0 12px 30px rgba(0,0,0,.3)}
+.cta .btn-fill{background:#FFFFFF;color:var(--red-2);box-shadow:0 12px 30px rgba(0,0,0,.3);--glow:255,255,255}
 .cta .btn-ghost{border-color:rgba(255,255,255,.6)}
 
 /* Footer */
@@ -269,14 +291,28 @@ details[open] p{animation:fadeDown .3s ease both}
 @keyframes marquee{to{transform:translateX(-50%)}}
 @keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
 @keyframes progress{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes float{0%,100%{transform:translate(0,0) rotate(0)}25%{transform:translate(30px,-30px) rotate(5deg)}50%{transform:translate(-20px,20px) rotate(-5deg)}75%{transform:translate(20px,30px) rotate(3deg)}}
+@keyframes glow{0%,100%{box-shadow:0 10px 28px rgba(0,0,0,.3),0 0 0 0 rgba(var(--glow,208,33,61),.5)}50%{box-shadow:0 10px 28px rgba(0,0,0,.3),0 0 0 15px rgba(var(--glow,208,33,61),0)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes drift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes zoom{from{transform:scale(1)}to{transform:scale(1.12)}}
+@keyframes bounce{0%,100%{transform:translateY(0);opacity:1}50%{transform:translateY(10px);opacity:.4}}
 @media (prefers-reduced-motion:no-preference){
 html{scroll-behavior:smooth}
 .hero-in{animation:heroUp .7s cubic-bezier(.2,.7,.2,1) both}
 .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.28s}.d4{animation-delay:.4s}.d5{animation-delay:.52s}.d6{animation-delay:.64s}
 .marquee-track{animation:marquee 66s linear infinite}
+.js .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.4,0,.2,1),transform .8s cubic-bezier(.4,0,.2,1)}
+.js .reveal.in{opacity:1;transform:none}
+.shapes i{animation:float 20s ease-in-out infinite}
+.glow{animation:glow 2s infinite}
+.cta .badge{animation:pulse 2.4s ease-in-out infinite}
+.hero::before{animation:drift 14s ease-in-out infinite}
+.cta{animation:drift 16s ease-in-out infinite}
+.hero-bg{animation:zoom 24s ease-in-out infinite alternate}
+.scroll-hint span::after{animation:bounce 1.8s ease-in-out infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
 @supports (animation-timeline:view()){
-.reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 5% cover 22%}
 .progress{animation:progress linear both;animation-timeline:scroll(root)}
 }
 }
@@ -303,6 +339,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FF
 <symbol id="i-menu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></symbol>
 <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6l6 6-6 6"/></symbol>
 </svg>
+
+<div class="shapes" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 
 <!-- HORNÁ LIŠTA -->
 <div class="topbar" id="topbar">
@@ -349,10 +387,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FF
 <div class="stat"><b>[POČET]</b><i></i><span>pohárov a medailí</span></div>
 </div>
 <div class="actions hero-in d5">
-<a href="#kontakt" class="btn btn-fill"><svg aria-hidden="true"><use href="#i-bolt"/></svg>Chcem prísť na tréning</a>
+<a href="#kontakt" class="btn btn-fill glow"><svg aria-hidden="true"><use href="#i-bolt"/></svg>Chcem prísť na tréning</a>
 <a href="#rozvrh" class="btn btn-ghost"><svg aria-hidden="true"><use href="#i-cal"/></svg>Pozrieť rozvrh</a>
 </div>
 <p class="assure hero-in d6"><svg aria-hidden="true"><use href="#i-shield"/></svg>Pre začiatočníkov · Skúsenosti nepotrebuješ · Bez záväzkov</p>
+<a href="#treningy" class="scroll-hint hero-in d6">Posuň nižšie<span aria-hidden="true"></span></a>
 </section>
 </div>
 
@@ -594,7 +633,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FF
 <h2 id="cta-title">Pripravený na prvý tréning?</h2>
 <p>Skúsenosti nepotrebuješ, záväzky nemáš. Stačí prísť, zvyšok ťa naučíme.</p>
 <div class="actions">
-<a href="#kontakt" class="btn btn-fill"><svg aria-hidden="true"><use href="#i-bolt"/></svg>Prihlásiť sa</a>
+<a href="#kontakt" class="btn btn-fill glow"><svg aria-hidden="true"><use href="#i-bolt"/></svg>Prihlásiť sa</a>
 <a href="tel:+421911283418" class="btn btn-ghost"><svg aria-hidden="true"><use href="#i-phone"/></svg>0911 283 418</a>
 </div>
 </div>
@@ -633,6 +672,15 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FF
 
 <script>
 (function () {
+  // Scroll reveal: sections fade up once they enter the viewport (content stays visible without JS or with reduced motion).
+  var reveals = document.querySelectorAll('.reveal');
+  if (document.documentElement.classList.contains('js')) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(function (r) { io.observe(r); });
+  }
+
   // Rozvrh platný od 7. 9. 2026 (podľa príspevku na Instagrame). types = filtre, pod ktorými sa tréning zobrazí.
   function t(time, name, detail, level, types) { return { time: time, name: name, detail: detail, level: level, types: types }; }
   var ALL = 'All level class', COMP = 'Competition class', KIDS = 'Deti';
@@ -680,6 +728,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FF
   function setMenu(open) { head.classList.toggle('open', open); menuBtn.setAttribute('aria-expanded', String(open)); menuBtn.setAttribute('aria-label', open ? 'Zavrieť menu' : 'Otvoriť menu'); }
   menuBtn.addEventListener('click', function () { setMenu(!head.classList.contains('open')); });
   head.querySelectorAll('.site-nav a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+
+  function onScroll() { head.classList.toggle('scrolled', window.scrollY > 40); }
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   var bar = document.getElementById('topbar');
   bar.querySelector('.topbar-x').addEventListener('click', function () { bar.remove(); });
