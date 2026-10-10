@@ -149,8 +149,8 @@ main,.site-foot{position:relative}
 .card:hover .disc-img img{transform:scale(1.05)}
 .disc-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(20,20,20,.95) 100%)}
 .disc-img .badge{position:absolute;left:16px;bottom:16px;z-index:1;font-size:12px;padding:6px 13px}
-.disc-ico{position:absolute;right:16px;top:16px;z-index:1;width:46px;height:46px;border-radius:12px;background:var(--grad);display:grid;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.35)}
-.disc-ico svg{width:24px;height:24px}
+.disc-ico{position:absolute;right:16px;top:16px;z-index:1;width:52px;height:52px;border-radius:14px;background:var(--grad);display:grid;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.35)}
+.disc-ico svg{width:26px;height:26px}
 .disc-ico{transition:transform .3s ease}
 .card:hover .disc-ico{transform:rotate(-8deg) scale(1.1)}
 .stat{transition:transform .4s cubic-bezier(.4,0,.2,1),background .4s ease}
@@ -318,17 +318,19 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FF
 </style>
 </head>
 <body>
+<!-- Ikony päsť, ľudia, čiapka, dieťa, signál a plameň: Font Awesome Free 5.15.4 (CC BY 4.0, fontawesome.com) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
 <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-<symbol id="i-fire" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2c1 3.5-1.6 5-1.6 8 0 1.4 1 2.6 2.4 2.6 1.5 0 2.4-1.2 2.4-2.8 0-.8-.2-1.5-.5-2.2C17 9.3 19 12 19 15a7 7 0 1 1-14 0c0-4.6 3.6-7.4 7-13z"/></symbol>
+<symbol id="i-fire" viewBox="0 0 448 512"><path fill="currentColor" d="M323.56 51.2c-20.8 19.3-39.58 39.59-56.22 59.97C240.08 73.62 206.28 35.53 168 0 69.74 91.17 0 209.96 0 281.6 0 408.85 100.29 512 224 512s224-103.15 224-230.4c0-53.27-51.98-163.14-124.44-230.4zm-19.47 340.65C282.43 407.01 255.72 416 226.86 416 154.71 416 96 368.26 96 290.75c0-38.61 24.31-72.63 72.79-130.75 6.93 7.98 98.83 125.34 98.83 125.34l58.63-66.88c4.14 6.85 7.91 13.55 11.27 19.97 27.35 52.19 15.81 118.97-33.43 153.42z"/></symbol>
 <symbol id="i-bolt" viewBox="0 0 24 24"><path fill="currentColor" d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></symbol>
 <symbol id="i-cal" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zM4 10h16M8 3v4M16 3v4"/></symbol>
 <symbol id="i-shield" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5l8-3zm-1 13.6l5.7-5.7-1.4-1.4L11 12.8 8.7 10.5l-1.4 1.4 3.7 3.7z"/></symbol>
-<symbol id="i-glove" viewBox="0 0 24 24"><path fill="currentColor" d="M8 3h6a5 5 0 0 1 5 5v4a4 4 0 0 1-2 3.5V19a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-2.3A5 5 0 0 1 4 12V9a3 3 0 0 1 3-3h1V3zm0 5H7a1 1 0 0 0-1 1v3a3 3 0 0 0 3 3h1v-2H9a1 1 0 0 1-1-1V8z"/></symbol>
-<symbol id="i-grip" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zm10 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM4 11h6l2 2 2-2h6l-1 4h-3l-1 6h-2l-1-4-1 4H9l-1-6H5l-1-4z"/></symbol>
-<symbol id="i-kids" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zM6 9.5l6 1.5 6-1.5.5 2-4.5 1.3V16l2 6h-2.2L12 17.5 10.2 22H8l2-6v-3.2L5.5 11.5l.5-2z"/></symbol>
+<symbol id="i-glove" viewBox="0 0 384 512"><path fill="currentColor" d="M255.98 160V16c0-8.84-7.16-16-16-16h-32c-8.84 0-16 7.16-16 16v146.93c5.02-1.78 10.34-2.93 15.97-2.93h48.03zm128 95.99c-.01-35.34-28.66-63.99-63.99-63.99H207.85c-8.78 0-15.9 7.07-15.9 15.85v.56c0 26.27 21.3 47.59 47.57 47.59h35.26c9.68 0 13.2 3.58 13.2 8v16.2c0 4.29-3.59 7.78-7.88 8-44.52 2.28-64.16 24.71-96.05 72.55l-6.31 9.47a7.994 7.994 0 0 1-11.09 2.22l-13.31-8.88a7.994 7.994 0 0 1-2.22-11.09l6.31-9.47c15.73-23.6 30.2-43.26 47.31-58.08-17.27-5.51-31.4-18.12-38.87-34.45-6.59 3.41-13.96 5.52-21.87 5.52h-32c-12.34 0-23.49-4.81-32-12.48C71.48 251.19 60.33 256 48 256H16c-5.64 0-10.97-1.15-16-2.95v77.93c0 33.95 13.48 66.5 37.49 90.51L63.99 448v64h255.98v-63.96l35.91-35.92A96.035 96.035 0 0 0 384 344.21l-.02-88.22zm-32.01-90.09V48c0-8.84-7.16-16-16-16h-32c-8.84 0-16 7.16-16 16v112h32c11.28 0 21.94 2.31 32 5.9zM16 224h32c8.84 0 16-7.16 16-16V80c0-8.84-7.16-16-16-16H16C7.16 64 0 71.16 0 80v128c0 8.84 7.16 16 16 16zm95.99 0h32c8.84 0 16-7.16 16-16V48c0-8.84-7.16-16-16-16h-32c-8.84 0-16 7.16-16 16v160c0 8.84 7.16 16 16 16z"/></symbol>
+<symbol id="i-grip" viewBox="0 0 640 512"><path fill="currentColor" d="M192 256c61.9 0 112-50.1 112-112S253.9 32 192 32 80 82.1 80 144s50.1 112 112 112zm76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C51.6 288 0 339.6 0 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2zM480 256c53 0 96-43 96-96s-43-96-96-96-96 43-96 96 43 96 96 96zm48 32h-3.8c-13.9 4.8-28.6 8-44.2 8s-30.3-3.2-44.2-8H432c-20.4 0-39.2 5.9-55.7 15.4 24.4 26.3 39.7 61.2 39.7 99.8v38.4c0 2.2-.5 4.3-.6 6.4H592c26.5 0 48-21.5 48-48 0-61.9-50.1-112-112-112z"/></symbol>
+<symbol id="i-kids" viewBox="0 0 640 512"><path fill="currentColor" d="M622.34 153.2L343.4 67.5c-15.2-4.67-31.6-4.67-46.79 0L17.66 153.2c-23.54 7.23-23.54 38.36 0 45.59l48.63 14.94c-10.67 13.19-17.23 29.28-17.88 46.9C38.78 266.15 32 276.11 32 288c0 10.78 5.68 19.85 13.86 25.65L20.33 428.53C18.11 438.52 25.71 448 35.94 448h56.11c10.24 0 17.84-9.48 15.62-19.47L82.14 313.65C90.32 307.85 96 298.78 96 288c0-11.57-6.47-21.25-15.66-26.87.76-15.02 8.44-28.3 20.69-36.72L296.6 284.5c9.06 2.78 26.44 6.25 46.79 0l278.95-85.7c23.55-7.24 23.55-38.36 0-45.6zM352.79 315.09c-28.53 8.76-52.84 3.92-65.59 0l-145.02-44.55L128 384c0 35.35 85.96 64 192 64s192-28.65 192-64l-14.18-113.47-145.03 44.56z"/></symbol>
+<symbol id="i-child" viewBox="0 0 384 512"><path fill="currentColor" d="M120 72c0-39.765 32.235-72 72-72s72 32.235 72 72c0 39.764-32.235 72-72 72s-72-32.236-72-72zm254.627 1.373c-12.496-12.497-32.758-12.497-45.254 0L242.745 160H141.254L54.627 73.373c-12.496-12.497-32.758-12.497-45.254 0-12.497 12.497-12.497 32.758 0 45.255L104 213.254V480c0 17.673 14.327 32 32 32h16c17.673 0 32-14.327 32-32V368h16v112c0 17.673 14.327 32 32 32h16c17.673 0 32-14.327 32-32V213.254l94.627-94.627c12.497-12.497 12.497-32.757 0-45.254z"/></symbol>
 <symbol id="i-clock" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 3a9 9 0 1 1 0 18 9 9 0 0 1 0-18zm0 4v5l3 2"/></symbol>
-<symbol id="i-level" viewBox="0 0 24 24"><path fill="currentColor" d="M4 18h3v3H4zm6.5-5h3v8h-3zM17 7h3v14h-3z"/></symbol>
+<symbol id="i-level" viewBox="0 0 640 512"><path fill="currentColor" d="M216 288h-48c-8.84 0-16 7.16-16 16v192c0 8.84 7.16 16 16 16h48c8.84 0 16-7.16 16-16V304c0-8.84-7.16-16-16-16zM88 384H40c-8.84 0-16 7.16-16 16v96c0 8.84 7.16 16 16 16h48c8.84 0 16-7.16 16-16v-96c0-8.84-7.16-16-16-16zm256-192h-48c-8.84 0-16 7.16-16 16v288c0 8.84 7.16 16 16 16h48c8.84 0 16-7.16 16-16V208c0-8.84-7.16-16-16-16zm128-96h-48c-8.84 0-16 7.16-16 16v384c0 8.84 7.16 16 16 16h48c8.84 0 16-7.16 16-16V112c0-8.84-7.16-16-16-16zM600 0h-48c-8.84 0-16 7.16-16 16v480c0 8.84 7.16 16 16 16h48c8.84 0 16-7.16 16-16V16c0-8.84-7.16-16-16-16z"/></symbol>
 <symbol id="i-pin" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7zm0 4.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"/></symbol>
 <symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></symbol>
 <symbol id="i-ig" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm5 5a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></symbol>
@@ -422,7 +424,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FF
 </div>
 </article>
 <article class="card disc">
-<div class="disc-img"><img src="assets/foto/galeria-youth.webp" width="720" height="720" loading="lazy" decoding="async" alt="Deti na tréningu bojových umení"><span class="badge"><svg aria-hidden="true"><use href="#i-kids"/></svg>[Vek od – do]</span><span class="disc-ico" aria-hidden="true"><svg><use href="#i-kids"/></svg></span></div>
+<div class="disc-img"><img src="assets/foto/galeria-youth.webp" width="720" height="720" loading="lazy" decoding="async" alt="Deti na tréningu bojových umení"><span class="badge"><svg aria-hidden="true"><use href="#i-child"/></svg>[Vek od – do]</span><span class="disc-ico" aria-hidden="true"><svg><use href="#i-kids"/></svg></span></div>
 <div class="disc-body">
 <h3>MMA Academy Youth</h3>
 <p>Tréningy pre deti a mládež. Disciplína, pohyb a sebavedomie pod vedením trénerov.</p>
