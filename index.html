@@ -60,8 +60,9 @@ main,.site-foot{position:relative}
 .head p{margin-top:18px;color:var(--muted);font-weight:300;font-size:19px}
 .badge{display:inline-flex;align-items:center;gap:8px;background:var(--grad);color:#FFFFFF;border-radius:999px;padding:7px 16px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;line-height:1.2}
 .badge svg{width:15px;height:15px;flex:none}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(var(--min,280px),1fr));gap:var(--gap,28px)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(var(--min,280px),100%),1fr));gap:var(--gap,28px)}
 .muted{color:var(--muted)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 30px;border-radius:999px;font-family:var(--display);font-weight:600;font-size:21px;letter-spacing:.08em;text-transform:uppercase;line-height:1;text-decoration:none;color:#FFFFFF;border:2px solid transparent;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease,background .2s ease,border-color .2s ease}
 .btn svg{width:18px;height:18px;flex:none}
 .btn-fill{background:var(--grad);box-shadow:0 10px 28px rgba(208,33,61,.38)}
@@ -97,6 +98,7 @@ main,.site-foot{position:relative}
 .brand img{width:56px;height:56px;border-radius:50%}
 .brand span{font-family:var(--display);font-weight:600;font-size:24px;letter-spacing:.06em;text-transform:uppercase;line-height:1;white-space:nowrap}
 @media (max-width:480px){.brand{gap:10px}.brand img{width:48px;height:48px}.brand span{font-size:19px;letter-spacing:.04em}}
+@media (max-width:360px){.site-head .wrap{gap:10px}.brand{gap:8px}.brand img{width:40px;height:40px}.brand span{font-size:16px;letter-spacing:.02em}}
 .site-nav{display:flex;align-items:center;gap:6px}
 .site-nav a{text-decoration:none;font-size:14px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:10px 14px;border-radius:8px;transition:background .2s ease}
 .site-nav a:not(.btn):hover{background:var(--grad)}
@@ -104,7 +106,7 @@ main,.site-foot{position:relative}
 .menu-btn{display:none;width:46px;height:46px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:#FFFFFF;cursor:pointer;align-items:center;justify-content:center}
 .menu-btn svg{width:22px;height:22px}
 .progress{position:absolute;left:0;bottom:-1px;width:100%;height:3px;background:var(--grad);transform-origin:left;transform:scaleX(0)}
-@media (max-width:980px){
+@media (max-width:1120px){
 .menu-btn{display:inline-flex}
 .site-nav{position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:4px;padding:12px 24px 24px;background:rgba(10,10,10,.98);border-bottom:1px solid var(--line);display:none}
 .site-head.open .site-nav{display:flex}
@@ -234,13 +236,14 @@ main,.site-foot{position:relative}
 .faq p{padding:0 24px 22px;color:var(--muted);font-weight:300}
 
 /* Contact */
-.contact{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:start}
 .contact-info{display:flex;flex-direction:column;gap:14px}
 .info{display:flex;align-items:center;gap:16px;padding:18px 20px}
 .info .ico{flex:none;width:48px;height:48px;border-radius:12px;background:var(--grad);display:grid;place-items:center}
 .info .ico svg{width:22px;height:22px}
 .info small{display:block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2)}
-.info a,.info address{font-style:normal;font-size:19px;font-weight:500;text-decoration:none}
+.info>div{min-width:0}
+.info a,.info address{font-style:normal;font-size:19px;font-weight:500;text-decoration:none;overflow-wrap:anywhere}
 .info a:hover{color:var(--red)}
 .map{display:flex;flex-direction:column;gap:14px}
 .map iframe{display:block;width:100%;height:280px;border:1px solid var(--line);border-radius:var(--r);background:#17171A}
@@ -252,7 +255,7 @@ main,.site-foot{position:relative}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(208,33,61,.25)}
 .field textarea{resize:vertical}
 .lead-form .btn{width:100%}
-@media (max-width:900px){.contact{grid-template-columns:1fr}.lead-form{padding:28px 22px}}
+@media (max-width:900px){.contact{grid-template-columns:minmax(0,1fr)}.lead-form{padding:28px 22px}}
 
 /* Final CTA */
 .cta{position:relative;overflow:hidden;border-radius:24px;padding:88px 28px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.14),transparent 42%),linear-gradient(135deg,#A0182F 0%,var(--red) 22%,#5A1A45 38%,var(--navy) 50%,#5A1A45 62%,var(--red) 78%,#A0182F 100%);background-size:100% 100%,300% 300%}
@@ -280,7 +283,6 @@ main,.site-foot{position:relative}
 .foot-bottom a{color:inherit}
 
 /* Motion */
-details[open] p{animation:fadeDown .3s ease both}
 @keyframes fadeDown{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 @keyframes heroUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 @keyframes marquee{to{transform:translateX(-50%)}}
@@ -296,6 +298,7 @@ html{scroll-behavior:smooth}
 .hero-in{animation:heroUp .7s cubic-bezier(.2,.7,.2,1) both}
 .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.28s}.d4{animation-delay:.4s}.d5{animation-delay:.52s}.d6{animation-delay:.64s}
 .marquee-track{animation:marquee 66s linear infinite}
+details[open] p{animation:fadeDown .3s ease both}
 .js .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.4,0,.2,1),transform .8s cubic-bezier(.4,0,.2,1)}
 .js .reveal.in{opacity:1;transform:none}
 .shapes i{animation:float 20s ease-in-out infinite}
@@ -338,13 +341,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FF
 <div class="shapes" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 
 <!-- HORNÁ LIŠTA -->
-<div class="topbar" id="topbar">
+<aside class="topbar" id="topbar" aria-label="Ponuka prvého tréningu">
 <div class="wrap">
 <strong>Prvý tréning na skúšku bez záväzkov</strong>
 <a href="#kontakt">Prihlásiť sa</a>
 <button type="button" class="topbar-x" aria-label="Zavrieť lištu">×</button>
 </div>
-</div>
+</aside>
 
 <!-- NAVIGÁCIA -->
 <header class="site-head" id="site-head">
@@ -398,7 +401,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FF
 </nav>
 
 <!-- TRÉNINGY -->
-<section id="treningy" class="wrap" aria-label="Tréningy" style="padding-top:64px;padding-bottom:104px">
+<section id="treningy" class="wrap" aria-labelledby="treningy-title" style="padding-top:64px;padding-bottom:104px">
+<h2 id="treningy-title" class="sr-only">Tréningy</h2>
 <div class="grid reveal" style="--min:300px">
 <article class="card disc">
 <div class="disc-img"><img src="assets/foto/galeria-klietka.webp" width="720" height="720" loading="lazy" decoding="async" alt="Zápas MMA v klietke"><span class="badge"><svg aria-hidden="true"><use href="#i-level"/></svg>Všetky úrovne</span><span class="disc-ico" aria-hidden="true"><svg><use href="#i-glove"/></svg></span></div>
@@ -717,6 +721,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FF
   function setMenu(open) { head.classList.toggle('open', open); menuBtn.setAttribute('aria-expanded', String(open)); menuBtn.setAttribute('aria-label', open ? 'Zavrieť menu' : 'Otvoriť menu'); }
   menuBtn.addEventListener('click', function () { setMenu(!head.classList.contains('open')); });
   head.querySelectorAll('.site-nav a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && head.classList.contains('open')) { setMenu(false); menuBtn.focus(); } });
 
   function onScroll() { head.classList.toggle('scrolled', window.scrollY > 40); }
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
