@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>MMA Academy Trenčín – tréningy MMA, grapplingu a wrestlingu</title>
 <meta name="description" content="MMA Academy Trenčín – tréningy MMA, grapplingu a wrestlingu pre dospelých aj mládež. Prvý tréning na skúšku bez záväzkov.">
-<meta name="theme-color" content="#0B0B0C">
+<meta name="theme-color" content="#0A0A0A">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="sk_SK">
 <meta property="og:site_name" content="MMA Academy Trenčín">
@@ -18,190 +18,354 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="assets/logo.webp" type="image/webp">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@700&family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@600;700&display=swap">
+<link rel="preload" as="image" href="assets/foto/hero-klietka.webp" type="image/webp">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600&family=Roboto:wght@300;400;500;700&display=swap">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SportsActivityLocation","name":"MMA Academy Trenčín","description":"Tréningy MMA, grapplingu a wrestlingu pre dospelých aj mládež.","telephone":"+421911283418","address":{"@type":"PostalAddress","streetAddress":"Gen. M. R. Štefánika 391/10","addressLocality":"Trenčín","addressCountry":"SK"},"sameAs":["https://www.instagram.com/mma.academy.trencin"]}
 </script>
+<script>if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('js');</script>
 <style>
-/* Layout: one dark, single-look page; full-width bands with a 1200px inner column, sticky header, octagon backdrop pinned behind the scroll. */
-:root{--accent:#C8201A;--ground:#0B0B0C;--panel:#151517;--ink:#FFFFFF;--muted:#C9C9CE;--muted-2:#B4B4BA;--dim:#4A4A50;--paper:#FFFFFF;--line:#26262A;
---display:'Anton','Arial Narrow',Impact,sans-serif;--cond:'Barlow Condensed','Arial Narrow',sans-serif;--body:'Barlow',system-ui,-apple-system,'Segoe UI',sans-serif;color-scheme:dark}
+/* Layout: dark page, 1200px column, crimson→navy gradient panels, rounded glass cards, pill buttons (style inspired by americancombatgym.com). */
+:root{--bg:#0A0A0A;--surface:#141414;--surface-2:#1B1B1D;--line:rgba(255,255,255,.1);--ink:#F2F2F2;--muted:rgba(255,255,255,.72);--muted-2:rgba(255,255,255,.55);
+--red:#D0213D;--red-2:#8E1630;--navy:#0E2350;--grad:linear-gradient(135deg,var(--red) 0%,var(--red-2) 100%);
+--display:'Teko','Arial Narrow',Impact,sans-serif;--body:'Roboto',system-ui,-apple-system,'Segoe UI',sans-serif;--r:16px;color-scheme:dark}
 *,*::before,*::after{box-sizing:border-box}
 html,body{overflow-x:clip}
-body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body)}
-img{max-width:100%}
-h1,h2,h3{text-wrap:balance;overflow-wrap:break-word}
-a{color:#FFFFFF}a:hover{color:#D9D9DC}
-summary{cursor:pointer}
+html{scroll-padding-top:90px}
+body{margin:0;background:var(--bg);isolation:isolate;color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;font-weight:400}
+img{max-width:100%;display:block}
+h1,h2,h3{margin:0;font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.06em;line-height:1;text-wrap:balance;overflow-wrap:break-word}
 p{margin:0}
-.site-bg{background-color:var(--ground);position:relative;isolation:isolate;font-size:17px;line-height:1.55}
-.bg-layer{position:sticky;top:0;z-index:-1;height:min(100vh,1400px);margin-bottom:calc(-1 * min(100vh,1400px));pointer-events:none;background-image:linear-gradient(rgba(11,11,12,.72),rgba(11,11,12,.72)),url(assets/bg.svg);background-size:cover;background-position:center}
+a{color:#FFFFFF}
+summary{cursor:pointer}
 
-/* Shared building blocks */
+/* Floating background shapes */
+.shapes{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.shapes i{position:absolute;border-radius:50%;background:radial-gradient(circle,var(--red) 0%,rgba(208,33,61,0) 70%);opacity:.16;filter:blur(20px)}
+.shapes i:nth-child(1){width:46vw;height:46vw;top:-10vw;left:-12vw}
+.shapes i:nth-child(2){width:30vw;height:30vw;top:30vh;right:-8vw;background:radial-gradient(circle,#2A4C9A 0%,rgba(42,76,154,0) 70%);animation-delay:-5s}
+.shapes i:nth-child(3){width:22vw;height:22vw;bottom:8vh;left:12vw;animation-delay:-10s}
+.shapes i:nth-child(4){width:36vw;height:36vw;bottom:-14vw;right:16vw;background:radial-gradient(circle,#5A1A45 0%,rgba(90,26,69,0) 70%);animation-delay:-15s}
+main,.site-foot{position:relative}
+
+/* Building blocks */
 .wrap{max-width:1200px;margin:0 auto;padding-left:24px;padding-right:24px}
-.sec{padding-top:96px;padding-bottom:96px}
-.sec-88{padding-top:88px;padding-bottom:88px}
-.light{background:#FFFFFF;color:var(--ground)}
-.light-2{background:#F0F0F1;color:var(--ground)}
-.title{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(40px,5vw,64px);line-height:1;text-transform:uppercase}
-.lead{color:var(--muted);max-width:620px}
+.sec{padding-top:104px;padding-bottom:104px}
+.head{text-align:center;margin:0 auto 56px;max-width:720px}
+.head h2{font-size:clamp(44px,6vw,64px)}
+.head h2::after{content:"";display:block;width:56px;height:4px;border-radius:2px;background:var(--grad);margin:14px auto 0}
+.head p{margin-top:18px;color:var(--muted);font-weight:300;font-size:19px}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--grad);color:#FFFFFF;border-radius:999px;padding:7px 16px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;line-height:1.2}
+.badge svg{width:15px;height:15px;flex:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(var(--min,280px),1fr));gap:var(--gap,28px)}
 .muted{color:var(--muted)}
-.muted-2{color:var(--muted-2)}
-.dim{color:var(--dim)}
-.label{font-family:var(--cond);font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-.anton{font-family:var(--display);font-weight:400;text-transform:uppercase}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(var(--min,260px),1fr));gap:var(--gap,24px)}
-.stack{display:flex;flex-direction:column;gap:var(--gap,14px)}
-.ph{display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;text-align:center;padding:16px;background:#17171A;border:2px dashed var(--dim);color:var(--muted-2);font-family:var(--cond);font-weight:600;letter-spacing:.1em;text-transform:uppercase}
-.ph-tag{background:var(--accent);color:#FFFFFF;padding:4px 10px;border-radius:3px;font-size:15px;letter-spacing:.06em}
-.btn{text-decoration:none;color:#FFFFFF;display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 16px;font-family:'Archivo',sans-serif;font-weight:700;font-size:16px;letter-spacing:0;text-transform:none;border:1px solid transparent;border-radius:4px;cursor:pointer}
-.btn-fill{background:var(--accent)}
-.btn-line{border-color:#6A6A72}
-.big-num{font-family:var(--display);font-size:52px;line-height:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 30px;border-radius:999px;font-family:var(--display);font-weight:600;font-size:21px;letter-spacing:.08em;text-transform:uppercase;line-height:1;text-decoration:none;color:#FFFFFF;border:2px solid transparent;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease,background .2s ease,border-color .2s ease}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-fill{background:var(--grad);box-shadow:0 10px 28px rgba(208,33,61,.38)}
+.btn-fill:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(208,33,61,.55)}
+.btn-line{border-color:var(--red);background:rgba(0,0,0,.25)}
+.btn-line:hover{background:rgba(208,33,61,.14);transform:translateY(-2px)}
+.btn-ghost{border-color:rgba(255,255,255,.35);background:rgba(0,0,0,.2)}
+.btn-ghost:hover{border-color:#FFFFFF;transform:translateY(-2px)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:999px;padding:5px 13px;font-size:14px;color:var(--muted)}
+.chip svg{width:14px;height:14px;color:var(--red)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .3s cubic-bezier(.2,.7,.2,1),border-color .3s ease,box-shadow .3s ease}
+.card:hover{transform:translateY(-6px);border-color:rgba(208,33,61,.55);box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.ph{display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;text-align:center;padding:16px;background:#17171A;border:2px dashed rgba(255,255,255,.18);color:var(--muted-2);font-family:var(--display);font-size:20px;letter-spacing:.1em;text-transform:uppercase}
+.ph-tag{background:var(--red);color:#FFFFFF;padding:2px 10px;border-radius:999px;font-family:var(--body);font-size:13px;font-weight:700;letter-spacing:.06em}
+
+/* Top bar */
+.topbar{background:var(--grad);font-size:15px}
+.topbar .wrap{display:flex;align-items:center;justify-content:center;gap:16px;min-height:52px;padding-top:6px;padding-bottom:6px;position:relative;flex-wrap:wrap;text-align:center}
+.topbar strong{font-family:var(--display);font-weight:600;font-size:21px;letter-spacing:.06em;text-transform:uppercase;line-height:1}
+.topbar a{background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:6px 18px;text-decoration:none;font-weight:700;font-size:14px}
+.topbar a:hover{background:rgba(0,0,0,.55)}
+.topbar-x{position:absolute;right:16px;top:50%;transform:translateY(-50%);width:36px;height:36px;border:0;border-radius:50%;background:transparent;color:#FFFFFF;font-size:22px;line-height:1;cursor:pointer}
+.topbar-x:hover{background:rgba(0,0,0,.25)}
+@media (max-width:600px){.topbar .wrap{gap:10px;padding-right:52px;justify-content:flex-start;text-align:left}.topbar strong{font-size:17px}.topbar a{padding:4px 12px;font-size:13px}}
 
 /* Header */
-.site-head{border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(11,11,12,.94);backdrop-filter:blur(8px)}
-.site-head .wrap{padding-top:16px;padding-bottom:16px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-height:44px}
-.brand img{width:64px;height:64px;border-radius:50%;object-fit:cover;display:block}
-.brand span{font-family:var(--display);font-size:20px;letter-spacing:.04em;text-transform:uppercase}
-.site-nav{display:flex;flex-wrap:wrap;align-items:center;gap:4px 28px;font-family:var(--cond);font-weight:600;font-size:18px;text-transform:uppercase;letter-spacing:.06em}
-.navlink{text-decoration:none;padding:10px 0;background:linear-gradient(currentColor,currentColor) left bottom/0 2px no-repeat;transition:background-size .25s ease}
-.navlink:hover{background-size:100% 2px}
-.progress{position:absolute;left:0;bottom:-1px;width:100%;height:3px;background:var(--accent);transform-origin:left;transform:scaleX(0)}
+.site-head{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(10,10,10,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.site-head{transition:box-shadow .3s ease,background .3s ease}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:84px;transition:min-height .3s ease}
+.site-head.scrolled{box-shadow:0 10px 30px rgba(0,0,0,.55);background:rgba(10,10,10,.97)}
+.site-head.scrolled .wrap{min-height:68px}
+.brand img{transition:width .3s ease,height .3s ease}
+.site-head.scrolled .brand img{width:46px;height:46px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:56px;height:56px;border-radius:50%}
+.brand span{font-family:var(--display);font-weight:600;font-size:24px;letter-spacing:.06em;text-transform:uppercase;line-height:1}
+.site-nav{display:flex;align-items:center;gap:6px}
+.site-nav a{text-decoration:none;font-size:14px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:10px 14px;border-radius:8px;transition:background .2s ease}
+.site-nav a:not(.btn):hover{background:var(--grad)}
+.site-nav .btn{min-height:46px;padding:10px 24px;font-size:19px;margin-left:10px}
+.menu-btn{display:none;width:46px;height:46px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:#FFFFFF;cursor:pointer;align-items:center;justify-content:center}
+.menu-btn svg{width:22px;height:22px}
+.progress{position:absolute;left:0;bottom:-1px;width:100%;height:3px;background:var(--grad);transform-origin:left;transform:scaleX(0)}
+@media (max-width:980px){
+.menu-btn{display:inline-flex}
+.site-nav{position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:4px;padding:12px 24px 24px;background:rgba(10,10,10,.98);border-bottom:1px solid var(--line);display:none}
+.site-head.open .site-nav{display:flex}
+.site-nav a{padding:14px 12px;font-size:16px}
+.site-nav .btn{margin:8px 0 0}
+}
 
 /* Hero */
-.hero{padding-top:72px;padding-bottom:88px;display:flex;flex-wrap:wrap;align-items:center;gap:48px;position:relative;isolation:isolate;overflow:clip}
-.ghost{position:absolute;left:0;bottom:-24px;z-index:-1;font-family:var(--display);font-size:clamp(120px,21vw,300px);line-height:.8;color:transparent;-webkit-text-stroke:1px #2C2C31;white-space:nowrap;text-transform:uppercase;pointer-events:none}
-.hero-copy{flex:1 1 460px;min-width:0;display:flex;flex-direction:column;gap:28px}
-.eyebrow{font-family:var(--cond);font-weight:700;font-size:18px;letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;gap:12px}
-.eyebrow span{display:inline-block;width:40px;height:4px;background:var(--accent)}
-.hero h1{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(56px,9vw,124px);line-height:.95;text-transform:uppercase;letter-spacing:.01em}
-.hero-sub{font-size:21px;color:var(--muted);max-width:520px}
-.actions{display:flex;flex-wrap:wrap;gap:12px}
-.hero-photo{flex:1 1 380px;min-width:0;height:560px;width:100%;object-fit:cover;display:block;background:#17171A}
-.gallery-img{width:100%;height:280px;object-fit:cover;display:block;background:#17171A}
+.hero-wrap{padding-top:28px}
+.hero{position:relative;isolation:isolate;overflow:hidden;border-radius:24px;padding:88px 28px 72px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:28px;border:1px solid var(--line)}
+.hero-bg{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(135deg,rgba(14,35,80,.93) 0%,rgba(40,18,52,.86) 25%,rgba(142,22,48,.9) 50%,rgba(40,18,52,.86) 75%,rgba(14,35,80,.93) 100%);background-size:300% 300%}
+.scroll-hint{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:8px;font-size:11px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted-2);text-decoration:none}
+.scroll-hint span{width:24px;height:38px;border:2px solid rgba(255,255,255,.35);border-radius:12px;position:relative}
+.scroll-hint span::after{content:"";position:absolute;left:50%;top:7px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:#FFFFFF}
+.hero h1{font-size:clamp(58px,9.5vw,112px);line-height:.92;letter-spacing:.04em}
+.hero h1 span{color:var(--red);text-shadow:0 0 34px rgba(208,33,61,.55)}
+.hero-sub{max-width:640px;font-size:clamp(18px,2.2vw,22px);font-weight:300;color:rgba(255,255,255,.9)}
+.hero-sub strong{font-weight:500;color:#FFFFFF}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,170px));gap:16px;justify-content:center;width:100%}
+.stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(6px);border-radius:14px;padding:18px 12px 16px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.stat b{font-family:var(--display);font-weight:600;font-size:46px;line-height:.9}
+.stat i{width:6px;height:6px;border-radius:50%;background:var(--red)}
+.stat span{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.assure{display:inline-flex;align-items:center;gap:10px;background:rgba(46,160,90,.12);border:1px solid rgba(76,200,120,.35);color:#8EE6AE;border-radius:999px;padding:9px 20px;font-size:15px}
+.assure svg{width:17px;height:17px;flex:none}
+@media (max-width:760px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:64px 18px 48px}}
 
 /* Marquee */
-.marquee{background:var(--accent);overflow:hidden;padding:18px 0;font-family:var(--display);font-size:26px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.marquee{margin-top:56px;background:var(--grad);overflow:hidden;padding:16px 0;font-family:var(--display);font-weight:600;font-size:30px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;line-height:1}
 .marquee-track{display:flex;width:max-content}
 .marquee-track>div{display:flex;align-items:center;gap:44px;padding-right:44px}
-.marquee a{color:#FFFFFF;text-decoration:none;background:linear-gradient(currentColor,currentColor) left bottom/0 3px no-repeat;transition:background-size .25s ease}
-.marquee a:hover{color:#FFFFFF;background-size:100% 3px}
+.marquee a{text-decoration:none;padding-top:4px;background:linear-gradient(currentColor,currentColor) left bottom/0 3px no-repeat;transition:background-size .25s ease}
+.marquee a:hover{background-size:100% 3px}
 .marquee a:focus-visible{outline-offset:6px}
 .marquee:focus-within .marquee-track{animation-play-state:paused}
 .marquee-track i{width:10px;height:10px;background:#FFFFFF;transform:rotate(45deg)}
 
-/* Cards */
-.card{background:var(--panel);transition:transform .3s cubic-bezier(.2,.7,.2,1),background .3s ease}
-.card:hover{transform:translateY(-6px);background:#1C1C1F}
-.offer{border-top:4px solid var(--accent);padding:32px}
-.offer h3{margin:0;font-size:34px}
-.step-num{font-family:var(--display);font-size:72px;line-height:1;color:var(--accent)}
-.cond-h{margin:0;font-family:var(--cond);font-weight:700;font-size:26px;text-transform:uppercase;letter-spacing:.04em}
-.price{padding:32px}
-.price h3{font-size:24px}
-.fighter{display:flex;flex-direction:column}
-.fighter .ph{height:260px;background:none}
-.fighter h3{margin:0;font-size:24px}
-.fighter>div:last-child{padding:18px 20px}
+/* Disciplines */
+.disc-img{position:relative;height:230px}
+.disc-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.card:hover .disc-img img{transform:scale(1.05)}
+.disc-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(20,20,20,.95) 100%)}
+.disc-img .badge{position:absolute;left:16px;bottom:16px;z-index:1;font-size:12px;padding:6px 13px}
+.disc-ico{position:absolute;right:16px;top:16px;z-index:1;width:46px;height:46px;border-radius:12px;background:var(--grad);display:grid;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.35)}
+.disc-ico svg{width:24px;height:24px}
+.disc-ico{transition:transform .3s ease}
+.card:hover .disc-ico{transform:rotate(-8deg) scale(1.1)}
+.stat{transition:transform .4s cubic-bezier(.4,0,.2,1),background .4s ease}
+.stat:hover{transform:translateY(-5px);background:rgba(255,255,255,.12)}
+.disc-body{padding:24px 26px 28px;display:flex;flex-direction:column;gap:14px;flex:1}
+.disc-body h3{font-size:34px}
+.disc-body p{color:var(--muted);font-weight:300}
+.disc-body .btn{margin-top:auto;width:100%;font-size:19px;min-height:48px}
+.disc{display:flex;flex-direction:column}
+
+/* About / how to start */
+.about{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:56px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about-img{position:relative}
+.about-img img{width:100%;height:440px;object-fit:cover;border-radius:var(--r)}
+.about-stat{position:absolute;right:-18px;bottom:-26px;background:var(--bg);border:2px solid var(--red);border-radius:14px;padding:16px 26px;text-align:center;box-shadow:0 16px 40px rgba(0,0,0,.5)}
+.about-stat b{display:block;font-family:var(--display);font-weight:600;font-size:48px;line-height:.9;color:var(--red)}
+.about-stat span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.about-copy{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+.about-copy h2{font-size:clamp(40px,4.6vw,56px)}
+.steps{list-style:none;margin:0;padding:0;width:100%}
+.steps li{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.steps li:last-child{border-bottom:0}
+.check{flex:none;width:26px;height:26px;border-radius:50%;background:var(--grad);display:grid;place-items:center;margin-top:2px}
+.check svg{width:14px;height:14px}
+.steps b{display:block;font-weight:500}
+.steps span{color:var(--muted);font-weight:300;font-size:16px}
+@media (max-width:900px){.about{grid-template-columns:1fr;padding:28px 22px 40px;gap:48px}.about-img img{height:320px}.about-stat{right:12px}}
 
 /* Schedule */
-#filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px}
-#filters button{background:#FFFFFF;color:var(--ground);cursor:pointer;min-height:46px;padding:11px 16px;font-family:'Archivo',sans-serif;font-weight:700;font-size:16px;border-radius:4px;border:1px solid var(--ground)}
-#filters button[aria-pressed="true"]{background:var(--ground);color:#FFFFFF}
-.day{background:#F0F0F1;padding:20px;display:flex;flex-direction:column;gap:12px}
-.day h3{margin:0;font-family:var(--display);font-weight:400;font-size:22px;text-transform:uppercase}
-.day small{color:var(--dim);font-size:15px}
-.day .none{color:var(--dim)}
-.slot{display:flex;flex-direction:column}
-.slot strong{font-family:var(--display);font-weight:400;font-size:24px;line-height:1.1}
-.slot span{font-weight:700}
+#filters{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:0 0 36px}
+#filters button{cursor:pointer;min-height:46px;padding:8px 22px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:#FFFFFF;font:500 15px var(--body);letter-spacing:.06em;text-transform:uppercase;transition:background .2s ease,border-color .2s ease}
+#filters button:hover{border-color:var(--red)}
+#filters button[aria-pressed="true"]{background:var(--grad);border-color:transparent;box-shadow:0 8px 22px rgba(208,33,61,.35)}
+.day{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px 20px;display:flex;flex-direction:column;gap:16px}
+.day h3{font-size:28px;padding-bottom:12px;border-bottom:2px solid var(--red)}
+.slot{display:flex;flex-direction:column;gap:2px}
+.slot strong{font-family:var(--display);font-weight:600;font-size:30px;line-height:1;color:var(--red)}
+.slot span{font-weight:500}
+.slot small{color:var(--muted-2);font-size:14px}
+.day .none{color:var(--muted-2)}
+.note{text-align:center;color:var(--muted-2);font-size:15px;margin-top:28px}
+.note a{color:var(--muted)}
+
+/* Pricing */
+.price{padding:36px 30px;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.price h3{font-size:28px}
+.price .amount{font-family:var(--display);font-weight:600;font-size:72px;line-height:.9}
+.price .amount small{font-size:26px;color:var(--muted)}
+.price p{color:var(--muted);font-weight:300}
+.price-hot{background:linear-gradient(160deg,rgba(208,33,61,.22),rgba(14,35,80,.55)),var(--surface);border-color:rgba(208,33,61,.6)}
+.price-hot .btn{margin-top:6px}
+
+/* Coaches & fighters */
+.coach{padding:32px 26px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;background:linear-gradient(180deg,rgba(14,35,80,.55),rgba(20,20,20,0) 70%),var(--surface)}
+.coach .ph{width:170px;height:170px;border-radius:50%;border:3px solid var(--red);box-shadow:0 0 0 8px rgba(208,33,61,.12);font-size:16px;padding:10px}
+.coach h3{font-size:30px}
+.fighter .ph{height:260px;border:0;border-bottom:1px solid var(--line);background:#17171A}
+.fighter-body{padding:20px 22px 24px;display:flex;flex-direction:column;gap:4px}
+.fighter h3{font-size:28px}
+.record{margin-top:6px;align-self:flex-start;font-weight:700;font-size:14px;background:rgba(208,33,61,.15);border:1px solid rgba(208,33,61,.5);border-radius:999px;padding:3px 12px}
+
+/* Gallery */
+.gallery img{width:100%;height:280px;object-fit:cover;border-radius:var(--r);border:1px solid var(--line);transition:transform .4s ease,filter .4s ease;filter:saturate(.9)}
+.gallery img:hover{transform:scale(1.02);filter:saturate(1.1)}
 
 /* Reviews & partners */
-.review{margin:0;background:#F0F0F1;padding:28px}
-.review blockquote{margin:0;font-size:19px}
-.review figcaption{font-weight:700}
-.partners{margin-top:64px;padding-top:40px;border-top:1px solid #D0D0D3;display:flex;flex-wrap:wrap;align-items:center;gap:16px 40px}
-.partner-ph{width:140px;height:52px;border:1px dashed #8A8A90;display:flex;align-items:center;justify-content:center;color:var(--dim);font-size:14px}
+.review{margin:0;padding:30px 28px;display:flex;flex-direction:column;gap:18px}
+.review svg{width:34px;height:34px;color:var(--red)}
+.review blockquote{margin:0;font-size:18px;font-weight:300}
+.review figcaption{display:flex;align-items:center;gap:12px;font-weight:500}
+.avatar{width:42px;height:42px;border-radius:50%;background:var(--grad);display:grid;place-items:center;font-family:var(--display);font-size:22px}
+.rating{display:flex;justify-content:center;margin-top:-28px;margin-bottom:44px}
+.partners{margin-top:64px;padding:26px 30px;border:1px solid var(--line);border-radius:var(--r);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px 36px}
+.partners .label{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2)}
+.partners .name{font-family:var(--display);font-weight:600;font-size:26px;letter-spacing:.06em;text-transform:uppercase}
+.partner-ph{width:140px;height:52px;border:1px dashed rgba(255,255,255,.25);border-radius:10px;display:grid;place-items:center;color:var(--muted-2);font-size:14px}
 
 /* FAQ */
-.faq{max-width:860px}
-.faq details{border-top:1px solid #3A3A3E;padding:20px 0}
-.faq details:last-child{border-bottom:1px solid #3A3A3E}
-.faq summary{font-family:var(--cond);font-weight:700;font-size:24px;min-height:44px}
-.faq p{margin-top:10px;color:var(--muted)}
+.faq{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:14px;transition:border-color .2s ease}
+.faq details[open]{border-color:rgba(208,33,61,.55)}
+.faq summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;font-family:var(--display);font-weight:600;font-size:26px;letter-spacing:.04em;text-transform:uppercase;line-height:1.1;min-height:44px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;width:32px;height:32px;border-radius:50%;background:var(--grad);display:grid;place-items:center;font-family:var(--body);font-size:22px;font-weight:400;transition:transform .25s ease}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{padding:0 24px 22px;color:var(--muted);font-weight:300}
 
 /* Contact */
-.contact{display:flex;flex-wrap:wrap;gap:56px}
-.contact>*{flex:1 1 380px;min-width:0}
-.contact-val{font-size:22px;font-weight:600}
-a.contact-val{display:inline-block;padding:8px 0}
-.lead-form{background:var(--panel);padding:36px;display:flex;flex-direction:column;gap:18px}
-.lead-form h3{margin:0;font-size:30px}
-.map{display:flex;flex-direction:column;gap:12px}
-.map iframe{display:block;width:100%;height:300px;border:1px solid #3A3A3E;background:#17171A}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:14px}
+.info{display:flex;align-items:center;gap:16px;padding:18px 20px}
+.info .ico{flex:none;width:48px;height:48px;border-radius:12px;background:var(--grad);display:grid;place-items:center}
+.info .ico svg{width:22px;height:22px}
+.info small{display:block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2)}
+.info a,.info address{font-style:normal;font-size:19px;font-weight:500;text-decoration:none}
+.info a:hover{color:var(--red)}
+.map{display:flex;flex-direction:column;gap:14px}
+.map iframe{display:block;width:100%;height:280px;border:1px solid var(--line);border-radius:var(--r);background:#17171A}
+.lead-form{padding:36px;display:flex;flex-direction:column;gap:18px}
+.lead-form h3{font-size:36px}
 .field{display:flex;flex-direction:column;gap:6px}
-.field label{font-weight:600}
-.field input,.field select,.field textarea{font:inherit;color:#FFFFFF;background:var(--ground);border:1px solid #5A5A61;padding:13px 14px}
+.field label{font-weight:500;font-size:15px}
+.field input,.field select,.field textarea{font:inherit;color:#FFFFFF;background:var(--bg);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:13px 14px;transition:border-color .2s ease}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(208,33,61,.25)}
 .field textarea{resize:vertical}
+.lead-form .btn{width:100%}
+@media (max-width:900px){.contact{grid-template-columns:1fr}.lead-form{padding:28px 22px}}
+
+/* Final CTA */
+.cta{position:relative;overflow:hidden;border-radius:24px;padding:88px 28px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.14),transparent 42%),linear-gradient(135deg,#A0182F 0%,var(--red) 22%,#5A1A45 38%,var(--navy) 50%,#5A1A45 62%,var(--red) 78%,#A0182F 100%);background-size:100% 100%,300% 300%}
+.cta h2{font-size:clamp(46px,7vw,84px)}
+.cta p{max-width:560px;font-size:20px;font-weight:300}
+.cta .badge{background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.3)}
+.cta .btn-fill{background:#FFFFFF;color:var(--red-2);box-shadow:0 12px 30px rgba(0,0,0,.3);--glow:255,255,255}
+.cta .btn-ghost{border-color:rgba(255,255,255,.6)}
 
 /* Footer */
-.site-foot{border-top:1px solid var(--line)}
-.site-foot .wrap{padding-top:28px;padding-bottom:28px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;color:var(--muted-2);font-size:15px}
+.site-foot{margin-top:104px;border-top:1px solid var(--line);background:#0E0E0E}
+.foot-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:40px;padding-top:64px;padding-bottom:48px}
+.foot-cols h3{font-size:26px;margin-bottom:22px}
+.foot-cols h3::after{content:"";display:block;width:34px;height:3px;border-radius:2px;background:var(--grad);margin-top:8px}
+.foot-cols ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.foot-cols li{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:15px}
+.foot-cols li svg{width:16px;height:16px;color:var(--red);flex:none}
+.foot-cols a{color:var(--muted);text-decoration:none}
+.foot-cols a:hover{color:#FFFFFF}
+.social{display:flex;gap:10px}
+.social a{width:44px;height:44px;border-radius:50%;background:var(--surface-2);border:1px solid var(--line);display:grid;place-items:center;transition:background .2s ease}
+.social a:hover{background:var(--grad)}
+.social svg{width:20px;height:20px}
+.foot-bottom{border-top:1px solid var(--line);padding-top:24px;padding-bottom:28px;text-align:center;color:var(--muted-2);font-size:14px}
+.foot-bottom a{color:inherit}
 
 /* Motion */
-.btn{transition:transform .2s ease,filter .2s ease,background .2s ease}
-.btn:hover{transform:translateY(-2px)}
-.btn:active{transform:translateY(0)}
-.btn-fill:hover{filter:brightness(1.14);color:#FFFFFF}
-.btn-line:hover{background:rgba(255,255,255,.08);color:#FFFFFF}
 details[open] p{animation:fadeDown .3s ease both}
 @keyframes fadeDown{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
-@keyframes heroUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
-@keyframes wipe{from{clip-path:inset(0 0 0 100%)}to{clip-path:inset(0)}}
-@keyframes lineGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes heroUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 @keyframes marquee{to{transform:translateX(-50%)}}
-@keyframes rise{from{opacity:0;transform:translateY(44px)}to{opacity:1;transform:none}}
-@keyframes drift{to{transform:translateX(-160px)}}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
 @keyframes progress{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-html{scroll-padding-top:100px}
+@keyframes float{0%,100%{transform:translate(0,0) rotate(0)}25%{transform:translate(30px,-30px) rotate(5deg)}50%{transform:translate(-20px,20px) rotate(-5deg)}75%{transform:translate(20px,30px) rotate(3deg)}}
+@keyframes glow{0%,100%{box-shadow:0 10px 28px rgba(0,0,0,.3),0 0 0 0 rgba(var(--glow,208,33,61),.5)}50%{box-shadow:0 10px 28px rgba(0,0,0,.3),0 0 0 15px rgba(var(--glow,208,33,61),0)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes drift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes zoom{from{transform:scale(1)}to{transform:scale(1.12)}}
+@keyframes bounce{0%,100%{transform:translateY(0);opacity:1}50%{transform:translateY(10px);opacity:.4}}
 @media (prefers-reduced-motion:no-preference){
 html{scroll-behavior:smooth}
 .hero-in{animation:heroUp .7s cubic-bezier(.2,.7,.2,1) both}
-.d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.3s}.d4{animation-delay:.45s}
-.hero-photo{animation:wipe .9s .25s cubic-bezier(.2,.7,.2,1) both}
-.line-grow{transform-origin:left;animation:lineGrow .6s .4s ease both}
+.d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.28s}.d4{animation-delay:.4s}.d5{animation-delay:.52s}.d6{animation-delay:.64s}
 .marquee-track{animation:marquee 66s linear infinite}
+.js .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.4,0,.2,1),transform .8s cubic-bezier(.4,0,.2,1)}
+.js .reveal.in{opacity:1;transform:none}
+.shapes i{animation:float 20s ease-in-out infinite}
+.glow{animation:glow 2s infinite}
+.cta .badge{animation:pulse 2.4s ease-in-out infinite}
+.hero::before{animation:drift 14s ease-in-out infinite}
+.cta{animation:drift 16s ease-in-out infinite}
+.hero-bg{animation:zoom 24s ease-in-out infinite alternate}
+.scroll-hint span::after{animation:bounce 1.8s ease-in-out infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
 @supports (animation-timeline:view()){
-.reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 5% cover 24%}
-.ghost{animation:drift linear both;animation-timeline:scroll(root);animation-range:0 900px}
 .progress{animation:progress linear both;animation-timeline:scroll(root)}
 }
 }
+@media (prefers-reduced-motion:reduce){.card,.btn,.gallery img,.disc-img img{transition:none}.card:hover,.btn:hover{transform:none}}
 a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FFFFFF;outline-offset:3px}
-.light a:focus-visible,.light button:focus-visible{outline-color:var(--ground)}
 </style>
 </head>
 <body>
-<div class="site-bg">
-<div aria-hidden="true" class="bg-layer"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-fire" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2c1 3.5-1.6 5-1.6 8 0 1.4 1 2.6 2.4 2.6 1.5 0 2.4-1.2 2.4-2.8 0-.8-.2-1.5-.5-2.2C17 9.3 19 12 19 15a7 7 0 1 1-14 0c0-4.6 3.6-7.4 7-13z"/></symbol>
+<symbol id="i-bolt" viewBox="0 0 24 24"><path fill="currentColor" d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zM4 10h16M8 3v4M16 3v4"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5l8-3zm-1 13.6l5.7-5.7-1.4-1.4L11 12.8 8.7 10.5l-1.4 1.4 3.7 3.7z"/></symbol>
+<symbol id="i-glove" viewBox="0 0 24 24"><path fill="currentColor" d="M8 3h6a5 5 0 0 1 5 5v4a4 4 0 0 1-2 3.5V19a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-2.3A5 5 0 0 1 4 12V9a3 3 0 0 1 3-3h1V3zm0 5H7a1 1 0 0 0-1 1v3a3 3 0 0 0 3 3h1v-2H9a1 1 0 0 1-1-1V8z"/></symbol>
+<symbol id="i-grip" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zm10 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM4 11h6l2 2 2-2h6l-1 4h-3l-1 6h-2l-1-4-1 4H9l-1-6H5l-1-4z"/></symbol>
+<symbol id="i-kids" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zM6 9.5l6 1.5 6-1.5.5 2-4.5 1.3V16l2 6h-2.2L12 17.5 10.2 22H8l2-6v-3.2L5.5 11.5l.5-2z"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 3a9 9 0 1 1 0 18 9 9 0 0 1 0-18zm0 4v5l3 2"/></symbol>
+<symbol id="i-level" viewBox="0 0 24 24"><path fill="currentColor" d="M4 18h3v3H4zm6.5-5h3v8h-3zM17 7h3v14h-3z"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7zm0 4.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></symbol>
+<symbol id="i-ig" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm5 5a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></symbol>
+<symbol id="i-quote" viewBox="0 0 24 24"><path fill="currentColor" d="M4 18v-5c0-4 2-6.6 6-8l1 2c-2.2 1-3.3 2.4-3.5 4H11v7H4zm9 0v-5c0-4 2-6.6 6-8l1 2c-2.2 1-3.3 2.4-3.5 4H20v7h-7z"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6l6 6-6 6"/></symbol>
+</svg>
+
+<div class="shapes" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+<!-- HORNÁ LIŠTA -->
+<div class="topbar" id="topbar">
+<div class="wrap">
+<strong>Prvý tréning na skúšku bez záväzkov</strong>
+<a href="#kontakt">Prihlásiť sa</a>
+<button type="button" class="topbar-x" aria-label="Zavrieť lištu">×</button>
+</div>
+</div>
+
 <!-- NAVIGÁCIA -->
-<header class="site-head">
+<header class="site-head" id="site-head">
 <div class="wrap">
 <a href="#top" class="brand">
-<img src="assets/logo.webp" width="64" height="64" alt="Logo MMA Academy Trenčín">
+<img src="assets/logo.webp" width="56" height="56" alt="Logo MMA Academy Trenčín">
 <span>MMA Academy Trenčín</span>
 </a>
-<nav aria-label="Hlavná navigácia" class="site-nav">
-<a href="#treningy" class="navlink">Tréningy</a>
-<a href="#rozvrh" class="navlink">Rozvrh</a>
-<a href="#cennik" class="navlink">Cenník</a>
-<a href="#treneri" class="navlink">Tréneri</a>
-<a href="#zapasnici" class="navlink">Zápasníci</a>
-<a href="#kontakt" class="navlink">Kontakt</a>
+<button type="button" class="menu-btn" aria-expanded="false" aria-controls="site-nav" aria-label="Otvoriť menu"><svg aria-hidden="true"><use href="#i-menu"/></svg></button>
+<nav aria-label="Hlavná navigácia" class="site-nav" id="site-nav">
+<a href="#treningy">Tréningy</a>
+<a href="#rozvrh">Rozvrh</a>
+<a href="#cennik">Cenník</a>
+<a href="#treneri">Tréneri</a>
+<a href="#zapasnici">Zápasníci</a>
+<a href="#kontakt">Kontakt</a>
 <a href="#kontakt" class="btn btn-fill">Prvý tréning</a>
 </nav>
 </div>
@@ -210,181 +374,198 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FF
 
 <main>
 <!-- HERO -->
-<section id="top" class="wrap hero">
-<div aria-hidden="true" class="ghost">Trenčín MMA</div>
-<div class="hero-copy">
-<div class="hero-in d1 eyebrow"><span aria-hidden="true" class="line-grow"></span>Nábor nových členov</div>
-<h1 class="hero-in d2">Trénuj MMA<br>v Trenčíne</h1>
-<p class="hero-in d3 hero-sub">Od prvého tréningu až po zápas v klietke. MMA a grappling pre začiatočníkov, pokročilých aj mládež.</p>
-<div class="hero-in d4 actions">
-<a href="#kontakt" class="btn btn-fill">Chcem prísť na tréning</a>
-<a href="#rozvrh" class="btn btn-line">Pozrieť rozvrh</a>
+<div class="wrap hero-wrap">
+<section id="top" class="hero">
+<img class="hero-bg" src="assets/foto/hero-klietka.webp" width="1100" height="1400" fetchpriority="high" alt="">
+<span class="badge hero-in d1"><svg aria-hidden="true"><use href="#i-fire"/></svg>Nábor nových členov · Trenčín</span>
+<h1 class="hero-in d2">Trénuj MMA<br>v <span>Trenčíne</span></h1>
+<p class="hero-sub hero-in d3">Od prvého tréningu až po zápas v klietke. MMA a grappling pre <strong>začiatočníkov</strong>, pokročilých aj mládež.</p>
+<div class="stats hero-in d4" aria-label="Klub v číslach">
+<div class="stat"><b>[ROK]</b><i></i><span>trénujeme od</span></div>
+<div class="stat"><b>[POČET]</b><i></i><span>aktívnych členov</span></div>
+<div class="stat"><b>[POČET]</b><i></i><span>zápasníkov v klietke</span></div>
+<div class="stat"><b>[POČET]</b><i></i><span>pohárov a medailí</span></div>
 </div>
-<p style="font-weight:600">Prvý tréning na skúšku bez záväzkov</p>
+<div class="actions hero-in d5">
+<a href="#kontakt" class="btn btn-fill glow"><svg aria-hidden="true"><use href="#i-bolt"/></svg>Chcem prísť na tréning</a>
+<a href="#rozvrh" class="btn btn-ghost"><svg aria-hidden="true"><use href="#i-cal"/></svg>Pozrieť rozvrh</a>
 </div>
-<img class="hero-photo" src="assets/foto/hero-klietka.webp" width="1100" height="1400" fetchpriority="high" alt="Zápasníci MMA počas zápasu v klietke">
+<p class="assure hero-in d6"><svg aria-hidden="true"><use href="#i-shield"/></svg>Pre začiatočníkov · Skúsenosti nepotrebuješ · Bez záväzkov</p>
+<a href="#treningy" class="scroll-hint hero-in d6">Posuň nižšie<span aria-hidden="true"></span></a>
 </section>
+</div>
 
 <!-- PÁS DISCIPLÍN -->
 <nav class="marquee" aria-label="Disciplíny">
 <div class="marquee-track">
-<div><a href="#rozvrh" data-filter="mma">MMA</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap">Grappling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap">Wrestling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="youth">Youth</a><i aria-hidden="true"></i><a href="#kontakt">Trenčín</a><i aria-hidden="true"></i><span aria-hidden="true" style="display:contents"><a href="#rozvrh" data-filter="mma" tabindex="-1">MMA</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Grappling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Wrestling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="youth" tabindex="-1">Youth</a><i aria-hidden="true"></i><a href="#kontakt" tabindex="-1">Trenčín</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="mma" tabindex="-1">MMA</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Grappling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Wrestling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="youth" tabindex="-1">Youth</a><i aria-hidden="true"></i><a href="#kontakt" tabindex="-1">Trenčín</a><i aria-hidden="true"></i></span></div>
-<div aria-hidden="true"><a href="#rozvrh" data-filter="mma" tabindex="-1">MMA</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Grappling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Wrestling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="youth" tabindex="-1">Youth</a><i aria-hidden="true"></i><a href="#kontakt" tabindex="-1">Trenčín</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="mma" tabindex="-1">MMA</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Grappling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Wrestling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="youth" tabindex="-1">Youth</a><i aria-hidden="true"></i><a href="#kontakt" tabindex="-1">Trenčín</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="mma" tabindex="-1">MMA</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Grappling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Wrestling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="youth" tabindex="-1">Youth</a><i aria-hidden="true"></i><a href="#kontakt" tabindex="-1">Trenčín</a><i aria-hidden="true"></i></div>
+<div><a href="#rozvrh" data-filter="mma">MMA</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap">Grappling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="grap">Wrestling</a><i aria-hidden="true"></i><a href="#rozvrh" data-filter="youth">Youth</a><i aria-hidden="true"></i><a href="#kontakt">Trenčín</a><i aria-hidden="true"></i><span aria-hidden="true" style="display:contents"><a href="#rozvrh" data-filter="mma" tabindex="-1">MMA</a><i></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Grappling</a><i></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Wrestling</a><i></i><a href="#rozvrh" data-filter="youth" tabindex="-1">Youth</a><i></i><a href="#kontakt" tabindex="-1">Trenčín</a><i></i><a href="#rozvrh" data-filter="mma" tabindex="-1">MMA</a><i></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Grappling</a><i></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Wrestling</a><i></i><a href="#rozvrh" data-filter="youth" tabindex="-1">Youth</a><i></i><a href="#kontakt" tabindex="-1">Trenčín</a><i></i></span></div>
+<div aria-hidden="true"><a href="#rozvrh" data-filter="mma" tabindex="-1">MMA</a><i></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Grappling</a><i></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Wrestling</a><i></i><a href="#rozvrh" data-filter="youth" tabindex="-1">Youth</a><i></i><a href="#kontakt" tabindex="-1">Trenčín</a><i></i><a href="#rozvrh" data-filter="mma" tabindex="-1">MMA</a><i></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Grappling</a><i></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Wrestling</a><i></i><a href="#rozvrh" data-filter="youth" tabindex="-1">Youth</a><i></i><a href="#kontakt" tabindex="-1">Trenčín</a><i></i><a href="#rozvrh" data-filter="mma" tabindex="-1">MMA</a><i></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Grappling</a><i></i><a href="#rozvrh" data-filter="grap" tabindex="-1">Wrestling</a><i></i><a href="#rozvrh" data-filter="youth" tabindex="-1">Youth</a><i></i><a href="#kontakt" tabindex="-1">Trenčín</a><i></i></div>
 </div>
 </nav>
-</div>
-</div>
-
-<!-- FAKTY -->
-<section style="border-bottom:1px solid var(--line)" aria-label="Klub v číslach">
-<div class="wrap grid" style="--min:200px;--gap:28px;padding-top:40px;padding-bottom:40px">
-<div><div class="big-num">[ROK]</div><div class="muted-2">trénujeme od roku</div></div>
-<div><div class="big-num">[POČET]</div><div class="muted-2">aktívnych členov</div></div>
-<div><div class="big-num">[POČET]</div><div class="muted-2">zápasníkov v klietke</div></div>
-<div><div class="big-num">[POČET]</div><div class="muted-2">pohárov a medailí</div></div>
-</div>
-</section>
 
 <!-- TRÉNINGY -->
 <section id="treningy" class="wrap sec">
-<h2 class="reveal title" style="margin-bottom:12px">Čo u nás trénuješ</h2>
-<p class="lead" style="margin-bottom:48px">Vyber si, čo ťa láka. Nevieš sa rozhodnúť? Príď sa pozrieť a poradíme ti priamo na žinenke.</p>
-<div class="reveal grid" style="--min:280px">
-<article class="card offer stack">
-<div class="anton muted-2" style="font-size:20px">01</div>
-<h3 class="anton">MMA</h3>
-<p class="muted">Postoj, zem aj prechody medzi nimi. Kompletná príprava od základov až po súťažnú úroveň.</p>
-<p style="font-weight:600">[Pre koho / úroveň]</p>
+<div class="head reveal">
+<h2>Čo u nás trénuješ</h2>
+<p>Vyber si, čo ťa láka. Nevieš sa rozhodnúť? Príď sa pozrieť a poradíme ti priamo na žinenke.</p>
+</div>
+<div class="grid reveal" style="--min:300px">
+<article class="card disc">
+<div class="disc-img"><img src="assets/foto/galeria-klietka.webp" width="720" height="720" loading="lazy" decoding="async" alt="Zápas MMA v klietke"><span class="badge"><svg aria-hidden="true"><use href="#i-level"/></svg>Všetky úrovne</span><span class="disc-ico" aria-hidden="true"><svg><use href="#i-glove"/></svg></span></div>
+<div class="disc-body">
+<h3>MMA</h3>
+<p>Postoj, zem aj prechody medzi nimi. Kompletná príprava od základov až po súťažnú úroveň.</p>
+<div class="chips"><span class="chip"><svg aria-hidden="true"><use href="#i-clock"/></svg>5× týždenne</span><span class="chip"><svg aria-hidden="true"><use href="#i-fire"/></svg>Striking · Competition</span></div>
+<a href="#rozvrh" data-filter="mma" class="btn btn-line"><svg aria-hidden="true"><use href="#i-cal"/></svg>Rozvrh MMA</a>
+</div>
 </article>
-<article class="card offer stack">
-<div class="anton muted-2" style="font-size:20px">02</div>
-<h3 class="anton">Grappling / Wrestling</h3>
-<p class="muted">Boj na zemi, kontrola a submisie. V spolupráci s GS Jiujitsu Academy.</p>
-<p style="font-weight:600">[Pre koho / úroveň]</p>
+<article class="card disc">
+<div class="disc-img"><img src="assets/foto/galeria-grappling.webp" width="720" height="720" loading="lazy" decoding="async" alt="Tréning grapplingu na žinenke"><span class="badge"><svg aria-hidden="true"><use href="#i-level"/></svg>Všetky úrovne</span><span class="disc-ico" aria-hidden="true"><svg><use href="#i-grip"/></svg></span></div>
+<div class="disc-body">
+<h3>Grappling / Wrestling</h3>
+<p>Boj na zemi, kontrola a submisie. V spolupráci s GS Jiujitsu Academy.</p>
+<div class="chips"><span class="chip"><svg aria-hidden="true"><use href="#i-clock"/></svg>4× týždenne</span><span class="chip"><svg aria-hidden="true"><use href="#i-fire"/></svg>Sparingy</span></div>
+<a href="#rozvrh" data-filter="grap" class="btn btn-line"><svg aria-hidden="true"><use href="#i-cal"/></svg>Rozvrh grapplingu</a>
+</div>
 </article>
-<article class="card offer stack">
-<div class="anton muted-2" style="font-size:20px">03</div>
-<h3 class="anton">MMA Academy Youth</h3>
-<p class="muted">Tréningy pre deti a mládež. Disciplína, pohyb a sebavedomie pod vedením trénerov.</p>
-<p style="font-weight:600">[Vek od – do]</p>
+<article class="card disc">
+<div class="disc-img"><img src="assets/foto/galeria-youth.webp" width="720" height="720" loading="lazy" decoding="async" alt="Deti na tréningu bojových umení"><span class="badge"><svg aria-hidden="true"><use href="#i-kids"/></svg>[Vek od – do]</span><span class="disc-ico" aria-hidden="true"><svg><use href="#i-kids"/></svg></span></div>
+<div class="disc-body">
+<h3>MMA Academy Youth</h3>
+<p>Tréningy pre deti a mládež. Disciplína, pohyb a sebavedomie pod vedením trénerov.</p>
+<div class="chips"><span class="chip"><svg aria-hidden="true"><use href="#i-clock"/></svg>3× týždenne o 15:30</span><span class="chip"><svg aria-hidden="true"><use href="#i-shield"/></svg>Disciplína a pohyb</span></div>
+<a href="#rozvrh" data-filter="youth" class="btn btn-line"><svg aria-hidden="true"><use href="#i-cal"/></svg>Rozvrh Youth</a>
+</div>
 </article>
 </div>
 </section>
 
 <!-- AKO ZAČAŤ -->
-<section class="wrap sec-88">
-<h2 class="reveal title" style="margin-bottom:48px">Ako začať</h2>
-<div class="reveal grid" style="--gap:40px">
-<div class="stack" style="--gap:10px">
-<div class="step-num">1</div>
-<h3 class="cond-h">Ozvi sa nám</h3>
-<p class="muted">Zavolaj, napíš na Instagram alebo vyplň formulár nižšie.</p>
+<section class="wrap" aria-labelledby="ako-zacat">
+<div class="about reveal">
+<div class="about-img">
+<img src="assets/foto/galeria-grappling.webp" width="720" height="720" loading="lazy" decoding="async" alt="Tréning na žinenke v klube">
+<div class="about-stat"><b>[ROK]</b><span>trénujeme od roku</span></div>
 </div>
-<div class="stack" style="--gap:10px">
-<div class="step-num">2</div>
-<h3 class="cond-h">Príď na prvý tréning</h3>
-<p class="muted">Stačí športové oblečenie a voda. Skúsenosti nepotrebuješ.</p>
-</div>
-<div class="stack" style="--gap:10px">
-<div class="step-num">3</div>
-<h3 class="cond-h">Staň sa členom</h3>
-<p class="muted">Ak ťa to chytí, vyberieš si členstvo a trénuješ pravidelne.</p>
+<div class="about-copy">
+<span class="badge">Ako začať</span>
+<h2 id="ako-zacat">Prvý tréning zvládne každý</h2>
+<p class="muted" style="font-weight:300">Či chceš schudnúť, naučiť sa brániť alebo raz zápasiť v klietke, začína sa rovnako: od základov a vlastným tempom.</p>
+<ol class="steps">
+<li><span class="check" aria-hidden="true"><svg><use href="#i-check"/></svg></span><div><b>Ozvi sa nám</b><span>Zavolaj, napíš na Instagram alebo vyplň formulár nižšie.</span></div></li>
+<li><span class="check" aria-hidden="true"><svg><use href="#i-check"/></svg></span><div><b>Príď na prvý tréning</b><span>Stačí športové oblečenie a voda. Skúsenosti nepotrebuješ.</span></div></li>
+<li><span class="check" aria-hidden="true"><svg><use href="#i-check"/></svg></span><div><b>Staň sa členom</b><span>Ak ťa to chytí, vyberieš si členstvo a trénuješ pravidelne.</span></div></li>
+</ol>
+<a href="#kontakt" class="btn btn-fill">Začať trénovať<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
 </div>
 </div>
 </section>
 
 <!-- ROZVRH -->
-<section id="rozvrh" class="light">
-<div class="wrap sec">
-<h2 class="reveal title" style="margin-bottom:12px">Rozvrh tréningov</h2>
-<p class="dim" style="margin-bottom:24px">Platí od 7. 9. 2026. Vyber si disciplínu a uvidíš len svoje tréningy. Aktuálne zmeny dávame vždy aj na <a href="https://www.instagram.com/mma.academy.trencin" rel="noopener" style="color:inherit">Instagram</a>.</p>
-<div id="filters" role="group" aria-label="Filter rozvrhu podľa disciplíny"></div>
-<div id="days" class="reveal grid" style="--min:170px;--gap:12px"></div>
+<section id="rozvrh" class="wrap sec">
+<div class="head reveal">
+<h2>Rozvrh tréningov</h2>
+<p>Platí od 7. 9. 2026. Vyber si disciplínu a uvidíš len svoje tréningy.</p>
 </div>
+<div id="filters" role="group" aria-label="Filter rozvrhu podľa disciplíny"></div>
+<div id="days" class="grid reveal" style="--min:200px;--gap:16px"></div>
+<p class="note">Aktuálne zmeny dávame vždy aj na <a href="https://www.instagram.com/mma.academy.trencin" rel="noopener">Instagram</a>.</p>
 </section>
 
 <!-- CENNÍK -->
-<section id="cennik" class="light-2">
-<div class="wrap sec">
-<h2 class="reveal title" style="margin-bottom:40px">Cenník</h2>
-<div class="reveal grid">
-<div class="price stack light" style="--gap:12px">
-<h3 class="cond-h">Jednorazový vstup</h3>
-<div class="big-num">10 €</div>
-<p class="dim">Jeden tréning podľa výberu.</p>
+<section id="cennik" class="wrap" style="padding-bottom:104px">
+<div class="head reveal">
+<h2>Cenník</h2>
+<p>Vyber si, ako chceš trénovať.</p>
 </div>
-<div class="price stack" style="--gap:12px;background:var(--ground);color:#FFFFFF">
-<h3 class="cond-h">Mesačné členstvo</h3>
-<div class="big-num">40 €</div>
-<a href="#kontakt" class="btn btn-fill" style="margin-top:8px;align-self:flex-start">Mám záujem</a>
+<div class="grid reveal">
+<div class="card price">
+<h3>Jednorazový vstup</h3>
+<div class="amount">10 <small>€</small></div>
+<p>Jeden tréning podľa výberu.</p>
 </div>
-<div class="price stack light" style="--gap:12px">
-<h3 class="cond-h">Youth</h3>
-<div class="big-num">25 €</div>
-<p class="dim">Mesačné členstvo pre deti a mládež.</p>
+<div class="card price price-hot">
+<span class="badge">Pre pravidelný tréning</span>
+<h3>Mesačné členstvo</h3>
+<div class="amount">40 <small>€ / mesiac</small></div>
+<a href="#kontakt" class="btn btn-fill">Mám záujem</a>
 </div>
+<div class="card price">
+<h3>Youth</h3>
+<div class="amount">25 <small>€ / mesiac</small></div>
+<p>Mesačné členstvo pre deti a mládež.</p>
 </div>
 </div>
 </section>
 
 <!-- TRÉNERI -->
-<section id="treneri" class="wrap sec">
-<h2 class="reveal title" style="margin-bottom:40px">Tréneri</h2>
-<div class="reveal grid">
-<div class="stack"><div class="ph" style="height:340px">Foto trénera<span class="ph-tag">[doplní klient]</span></div><h3 class="anton" style="margin:0;font-size:28px">[Meno trénera]</h3><p class="muted">[Disciplína, skúsenosti, úspechy]</p></div>
-<div class="stack"><div class="ph" style="height:340px">Foto trénera<span class="ph-tag">[doplní klient]</span></div><h3 class="anton" style="margin:0;font-size:28px">[Meno trénera]</h3><p class="muted">[Disciplína, skúsenosti, úspechy]</p></div>
-<div class="stack"><div class="ph" style="height:340px">Foto trénera<span class="ph-tag">[doplní klient]</span></div><h3 class="anton" style="margin:0;font-size:28px">[Meno trénera]</h3><p class="muted">[Disciplína, skúsenosti, úspechy]</p></div>
+<section id="treneri" class="wrap" style="padding-bottom:104px">
+<div class="head reveal">
+<h2>Tréneri</h2>
+<p>Ľudia, ktorí ťa povedú od prvého tréningu.</p>
+</div>
+<div class="grid reveal">
+<div class="card coach"><div class="ph">Foto trénera<span class="ph-tag">[doplní klient]</span></div><h3>[Meno trénera]</h3><p class="muted">[Disciplína, skúsenosti, úspechy]</p></div>
+<div class="card coach"><div class="ph">Foto trénera<span class="ph-tag">[doplní klient]</span></div><h3>[Meno trénera]</h3><p class="muted">[Disciplína, skúsenosti, úspechy]</p></div>
+<div class="card coach"><div class="ph">Foto trénera<span class="ph-tag">[doplní klient]</span></div><h3>[Meno trénera]</h3><p class="muted">[Disciplína, skúsenosti, úspechy]</p></div>
 </div>
 </section>
 
 <!-- ZÁPASNÍCI -->
-<section id="zapasnici" class="wrap" style="padding-bottom:96px">
-<h2 class="reveal title" style="margin-bottom:12px">Naši zápasníci</h2>
-<p class="lead" style="margin-bottom:40px">Z tréningu až do klietky. Títo chalani reprezentujú klub na turnajoch.</p>
-<div class="reveal grid" style="--min:220px;--gap:20px">
-<div class="card fighter"><div class="ph">Foto<span class="ph-tag">[doplní klient]</span></div><div class="stack" style="--gap:4px"><h3 class="anton">[Meno zápasníka]</h3><div class="muted">[Váhová kategória]</div><div style="font-weight:700">[Bilancia V–P–R]</div></div></div>
-<div class="card fighter"><div class="ph">Foto<span class="ph-tag">[doplní klient]</span></div><div class="stack" style="--gap:4px"><h3 class="anton">[Meno zápasníka]</h3><div class="muted">[Váhová kategória]</div><div style="font-weight:700">[Bilancia V–P–R]</div></div></div>
-<div class="card fighter"><div class="ph">Foto<span class="ph-tag">[doplní klient]</span></div><div class="stack" style="--gap:4px"><h3 class="anton">[Meno zápasníka]</h3><div class="muted">[Váhová kategória]</div><div style="font-weight:700">[Bilancia V–P–R]</div></div></div>
-<div class="card fighter"><div class="ph">Foto<span class="ph-tag">[doplní klient]</span></div><div class="stack" style="--gap:4px"><h3 class="anton">[Meno zápasníka]</h3><div class="muted">[Váhová kategória]</div><div style="font-weight:700">[Bilancia V–P–R]</div></div></div>
+<section id="zapasnici" class="wrap" style="padding-bottom:104px">
+<div class="head reveal">
+<h2>Naši zápasníci</h2>
+<p>Z tréningu až do klietky. Títo chalani reprezentujú klub na turnajoch.</p>
+</div>
+<div class="grid reveal" style="--min:230px;--gap:20px">
+<div class="card fighter"><div class="ph">Foto<span class="ph-tag">[doplní klient]</span></div><div class="fighter-body"><h3>[Meno zápasníka]</h3><div class="muted">[Váhová kategória]</div><span class="record">[Bilancia V–P–R]</span></div></div>
+<div class="card fighter"><div class="ph">Foto<span class="ph-tag">[doplní klient]</span></div><div class="fighter-body"><h3>[Meno zápasníka]</h3><div class="muted">[Váhová kategória]</div><span class="record">[Bilancia V–P–R]</span></div></div>
+<div class="card fighter"><div class="ph">Foto<span class="ph-tag">[doplní klient]</span></div><div class="fighter-body"><h3>[Meno zápasníka]</h3><div class="muted">[Váhová kategória]</div><span class="record">[Bilancia V–P–R]</span></div></div>
+<div class="card fighter"><div class="ph">Foto<span class="ph-tag">[doplní klient]</span></div><div class="fighter-body"><h3>[Meno zápasníka]</h3><div class="muted">[Váhová kategória]</div><span class="record">[Bilancia V–P–R]</span></div></div>
 </div>
 </section>
 
 <!-- GALÉRIA -->
-<section class="wrap sec-88">
-<h2 class="reveal title" style="margin-bottom:12px">Z tréningov a zápasov</h2>
-<p class="muted" style="margin-bottom:40px">Viac nájdeš na Instagrame <a href="https://www.instagram.com/mma.academy.trencin" rel="noopener">@mma.academy.trencin</a>.</p>
-<div class="reveal grid" style="--min:240px;--gap:12px">
-<img class="gallery-img" src="assets/foto/galeria-klietka.webp" width="720" height="720" loading="lazy" decoding="async" alt="Zápas MMA v klietke">
-<img class="gallery-img" src="assets/foto/galeria-grappling.webp" width="720" height="720" loading="lazy" decoding="async" alt="Tréning grapplingu na žinenke">
-<img class="gallery-img" src="assets/foto/galeria-trofeje.webp" width="720" height="720" loading="lazy" decoding="async" alt="Poháre a trofeje zo súťaží">
-<img class="gallery-img" src="assets/foto/galeria-youth.webp" width="720" height="720" loading="lazy" decoding="async" alt="Deti na tréningu bojových umení">
+<section class="wrap" style="padding-bottom:104px">
+<div class="head reveal">
+<h2>Z tréningov a zápasov</h2>
+<p>Viac nájdeš na Instagrame <a href="https://www.instagram.com/mma.academy.trencin" rel="noopener">@mma.academy.trencin</a>.</p>
+</div>
+<div class="grid gallery reveal" style="--min:240px;--gap:16px">
+<img src="assets/foto/galeria-klietka.webp" width="720" height="720" loading="lazy" decoding="async" alt="Zápas MMA v klietke">
+<img src="assets/foto/galeria-grappling.webp" width="720" height="720" loading="lazy" decoding="async" alt="Tréning grapplingu na žinenke">
+<img src="assets/foto/galeria-trofeje.webp" width="720" height="720" loading="lazy" decoding="async" alt="Poháre a trofeje zo súťaží">
+<img src="assets/foto/galeria-youth.webp" width="720" height="720" loading="lazy" decoding="async" alt="Deti na tréningu bojových umení">
 </div>
 </section>
 
 <!-- RECENZIE A PARTNERI -->
-<section class="light">
-<div class="wrap sec">
-<h2 class="reveal title" style="margin-bottom:12px">Čo hovoria členovia</h2>
-<p class="dim" style="margin-bottom:40px;font-weight:600">[HODNOTENIE] / 5 na Google · [POČET] recenzií</p>
-<div class="reveal grid">
-<figure class="review stack"><blockquote>[Recenzia člena z Google, 1 až 2 vety]</blockquote><figcaption>[Meno] · [trénuje od]</figcaption></figure>
-<figure class="review stack"><blockquote>[Recenzia rodiča dieťaťa z Youth]</blockquote><figcaption>[Meno] · [rodič]</figcaption></figure>
-<figure class="review stack"><blockquote>[Recenzia úplného začiatočníka]</blockquote><figcaption>[Meno] · [trénuje od]</figcaption></figure>
+<section class="wrap" style="padding-bottom:104px">
+<div class="head reveal">
+<h2>Čo hovoria členovia</h2>
+<p>Nemusíš veriť nám, opýtaj sa tých, čo u nás trénujú.</p>
 </div>
-<div class="partners">
-<div class="label dim">Partneri klubu</div>
-<div class="anton" style="font-size:22px">GS Jiujitsu Academy</div>
-<div class="partner-ph">[Logo partnera]</div>
-<div class="partner-ph">[Logo partnera]</div>
-<div class="partner-ph">[Logo partnera]</div>
+<div class="rating"><span class="chip">[HODNOTENIE] / 5 na Google · [POČET] recenzií</span></div>
+<div class="grid reveal">
+<figure class="card review"><svg aria-hidden="true"><use href="#i-quote"/></svg><blockquote>[Recenzia člena z Google, 1 až 2 vety]</blockquote><figcaption><span class="avatar" aria-hidden="true">?</span>[Meno] · [trénuje od]</figcaption></figure>
+<figure class="card review"><svg aria-hidden="true"><use href="#i-quote"/></svg><blockquote>[Recenzia rodiča dieťaťa z Youth]</blockquote><figcaption><span class="avatar" aria-hidden="true">?</span>[Meno] · [rodič]</figcaption></figure>
+<figure class="card review"><svg aria-hidden="true"><use href="#i-quote"/></svg><blockquote>[Recenzia úplného začiatočníka]</blockquote><figcaption><span class="avatar" aria-hidden="true">?</span>[Meno] · [trénuje od]</figcaption></figure>
 </div>
+<div class="partners reveal">
+<div class="label">Partneri klubu</div>
+<div class="name">GS Jiujitsu Academy</div>
+<div class="partner-ph">[Logo partnera]</div>
+<div class="partner-ph">[Logo partnera]</div>
+<div class="partner-ph">[Logo partnera]</div>
 </div>
 </section>
 
 <!-- FAQ -->
-<section id="otazky" class="wrap sec faq">
-<h2 class="reveal title" style="margin-bottom:32px">Časté otázky</h2>
-<div>
+<section id="otazky" class="wrap" style="padding-bottom:104px">
+<div class="head reveal">
+<h2>Časté otázky</h2>
+</div>
+<div class="faq">
 <details class="reveal" open><summary>Nikdy som netrénoval. Môžem prísť?</summary><p>Áno. Začiatočníci idú od základov a vlastným tempom. Nikto ťa na prvom tréningu nepostaví do sparingu.</p></details>
 <details class="reveal"><summary>Čo si mám priniesť?</summary><p>Na prvý tréning stačí športové oblečenie, uterák a voda. [Čo klub požičia / čo si treba neskôr kúpiť]</p></details>
 <details class="reveal"><summary>Od koľkých rokov berieme deti?</summary><p>MMA Academy Youth je pre deti a mládež od [VEK] do [VEK] rokov. Prihlásiť ich môže rodič alebo zákonný zástupca.</p></details>
@@ -393,28 +574,23 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FF
 </section>
 
 <!-- KONTAKT -->
-<section id="kontakt" class="wrap sec contact">
-<div class="stack" style="--gap:24px">
-<h2 class="reveal title">Príď si to vyskúšať</h2>
-<div>
-<div class="label muted-2">Adresa</div>
-<address class="contact-val" style="font-style:normal">Gen. M. R. Štefánika 391/10, Trenčín</address>
+<section id="kontakt" class="wrap" style="padding-bottom:104px">
+<div class="head reveal">
+<h2>Príď si to vyskúšať</h2>
+<p>Ozvi sa a dohodneme tvoj prvý tréning.</p>
 </div>
-<div>
-<div class="label muted-2">Telefón</div>
-<a href="tel:+421911283418" class="contact-val">0911 283 418</a>
-</div>
-<div>
-<div class="label muted-2">Instagram</div>
-<a href="https://www.instagram.com/mma.academy.trencin" rel="noopener" class="contact-val">@mma.academy.trencin</a>
-</div>
+<div class="contact">
+<div class="contact-info">
+<div class="card info"><span class="ico" aria-hidden="true"><svg><use href="#i-pin"/></svg></span><div><small>Adresa</small><address>Gen. M. R. Štefánika 391/10, Trenčín</address></div></div>
+<div class="card info"><span class="ico" aria-hidden="true"><svg><use href="#i-phone"/></svg></span><div><small>Telefón</small><a href="tel:+421911283418">0911 283 418</a></div></div>
+<div class="card info"><span class="ico" aria-hidden="true"><svg><use href="#i-ig"/></svg></span><div><small>Instagram</small><a href="https://www.instagram.com/mma.academy.trencin" rel="noopener">@mma.academy.trencin</a></div></div>
 <div class="map">
 <iframe src="https://www.google.com/maps?q=Gen.+M.+R.+%C5%A0tef%C3%A1nika+391%2F10%2C+911+01+Tren%C4%8D%C3%ADn&amp;z=16&amp;hl=sk&amp;output=embed" title="Mapa: MMA Academy Trenčín, Gen. M. R. Štefánika 391/10, Trenčín" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-<a href="https://www.google.com/maps/dir/?api=1&amp;destination=Gen.+M.+R.+%C5%A0tef%C3%A1nika+391%2F10%2C+Tren%C4%8D%C3%ADn" rel="noopener" target="_blank" class="btn btn-line" style="align-self:flex-start">Navigovať do klubu</a>
+<a href="https://www.google.com/maps/dir/?api=1&amp;destination=Gen.+M.+R.+%C5%A0tef%C3%A1nika+391%2F10%2C+Tren%C4%8D%C3%ADn" rel="noopener" target="_blank" class="btn btn-line" style="align-self:flex-start"><svg aria-hidden="true"><use href="#i-pin"/></svg>Navigovať do klubu</a>
 </div>
 </div>
-<form id="lead" class="lead-form" novalidate>
-<h3 class="anton">Prihlás sa na prvý tréning</h3>
+<form id="lead" class="card lead-form" novalidate>
+<h3>Prihlás sa na prvý tréning</h3>
 <div class="field">
 <label for="f-meno">Meno a priezvisko</label>
 <input id="f-meno" name="meno" type="text" autocomplete="name" required>
@@ -443,24 +619,68 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FF
 <label for="f-sprava">Správa (nepovinné)</label>
 <textarea id="f-sprava" name="sprava" rows="3"></textarea>
 </div>
-<button type="submit" class="btn btn-fill">Odoslať</button>
-<p id="lead-status" role="status" style="font-weight:600"></p>
-<p class="muted-2" style="font-size:15px">Ozveme sa ti do [X] hodín a dohodneme termín.</p>
+<button type="submit" class="btn btn-fill"><svg aria-hidden="true"><use href="#i-bolt"/></svg>Odoslať</button>
+<p id="lead-status" role="status" style="font-weight:500"></p>
+<p class="muted" style="font-size:14px">Ozveme sa ti do [X] hodín a dohodneme termín.</p>
 </form>
+</div>
+</section>
+
+<!-- VÝZVA -->
+<section class="wrap" aria-labelledby="cta-title">
+<div class="cta reveal">
+<span class="badge"><svg aria-hidden="true"><use href="#i-fire"/></svg>Nábor nových členov</span>
+<h2 id="cta-title">Pripravený na prvý tréning?</h2>
+<p>Skúsenosti nepotrebuješ, záväzky nemáš. Stačí prísť, zvyšok ťa naučíme.</p>
+<div class="actions">
+<a href="#kontakt" class="btn btn-fill glow"><svg aria-hidden="true"><use href="#i-bolt"/></svg>Prihlásiť sa</a>
+<a href="tel:+421911283418" class="btn btn-ghost"><svg aria-hidden="true"><use href="#i-phone"/></svg>0911 283 418</a>
+</div>
+</div>
 </section>
 </main>
 
 <!-- PÄTA -->
 <footer class="site-foot">
-<div class="wrap">
-<span>© 2026 MMA Academy Trenčín · Ilustračné fotky: <a href="https://unsplash.com" rel="noopener" style="color:inherit">Unsplash</a></span>
-<span>Gen. M. R. Štefánika 391/10, Trenčín · 0911 283 418</span>
+<div class="wrap foot-cols">
+<div>
+<h3>Kontakt</h3>
+<ul>
+<li><svg aria-hidden="true"><use href="#i-pin"/></svg>Gen. M. R. Štefánika 391/10, Trenčín</li>
+<li><svg aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+421911283418">0911 283 418</a></li>
+<li><svg aria-hidden="true"><use href="#i-ig"/></svg><a href="https://www.instagram.com/mma.academy.trencin" rel="noopener">@mma.academy.trencin</a></li>
+</ul>
 </div>
+<div>
+<h3>Rýchle odkazy</h3>
+<ul>
+<li><a href="#treningy">Tréningy</a></li>
+<li><a href="#rozvrh">Rozvrh</a></li>
+<li><a href="#cennik">Cenník</a></li>
+<li><a href="#treneri">Tréneri</a></li>
+<li><a href="#otazky">Časté otázky</a></li>
+<li><a href="#kontakt">Prvý tréning</a></li>
+</ul>
+</div>
+<div>
+<h3>Sleduj nás</h3>
+<div class="social"><a href="https://www.instagram.com/mma.academy.trencin" rel="noopener" aria-label="Instagram"><svg aria-hidden="true"><use href="#i-ig"/></svg></a></div>
+</div>
+</div>
+<div class="wrap foot-bottom">© 2026 MMA Academy Trenčín · Ilustračné fotky: <a href="https://unsplash.com" rel="noopener">Unsplash</a></div>
 </footer>
 
-</div>
 <script>
 (function () {
+  // Scroll reveal: sections fade up once they enter the viewport (content stays visible without JS or with reduced motion).
+  var reveals = document.querySelectorAll('.reveal');
+  if (document.documentElement.classList.contains('js')) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(function (r) { io.observe(r); });
+  }
+
   // Rozvrh platný od 7. 9. 2026 (podľa príspevku na Instagrame). types = filtre, pod ktorými sa tréning zobrazí.
   function t(time, name, detail, level, types) { return { time: time, name: name, detail: detail, level: level, types: types }; }
   var ALL = 'All level class', COMP = 'Competition class', KIDS = 'Deti';
@@ -499,9 +719,22 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FF
     dEl.replaceChildren(frag);
   }
   render();
-  document.querySelectorAll('.marquee a[data-filter]').forEach(function (a) {
+  // Links into the schedule (marquee, discipline cards) switch the filter before the page scrolls to it.
+  document.querySelectorAll('a[data-filter]').forEach(function (a) {
     a.addEventListener('click', function () { cur = a.getAttribute('data-filter'); render(); });
   });
+
+  var head = document.getElementById('site-head'), menuBtn = head.querySelector('.menu-btn');
+  function setMenu(open) { head.classList.toggle('open', open); menuBtn.setAttribute('aria-expanded', String(open)); menuBtn.setAttribute('aria-label', open ? 'Zavrieť menu' : 'Otvoriť menu'); }
+  menuBtn.addEventListener('click', function () { setMenu(!head.classList.contains('open')); });
+  head.querySelectorAll('.site-nav a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+
+  function onScroll() { head.classList.toggle('scrolled', window.scrollY > 40); }
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  var bar = document.getElementById('topbar');
+  bar.querySelector('.topbar-x').addEventListener('click', function () { bar.remove(); });
+
   var form = document.getElementById('lead'), status = document.getElementById('lead-status');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
