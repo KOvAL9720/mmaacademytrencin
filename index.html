@@ -110,6 +110,9 @@ p{margin:0}
 .day h3{margin:0;font-family:var(--display);font-weight:400;font-size:22px;text-transform:uppercase}
 .day small{color:var(--dim);font-size:15px}
 .day .none{color:var(--dim)}
+.slot{display:flex;flex-direction:column}
+.slot strong{font-family:var(--display);font-weight:400;font-size:24px;line-height:1.1}
+.slot span{font-weight:700}
 
 /* Reviews & partners */
 .review{margin:0;background:#F0F0F1;padding:28px}
@@ -287,7 +290,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FF
 <section id="rozvrh" class="light">
 <div class="wrap sec">
 <h2 class="reveal title" style="margin-bottom:12px">Rozvrh tréningov</h2>
-<p class="dim" style="margin-bottom:24px">Vyber si disciplínu a uvidíš len svoje tréningy. Aktuálne zmeny dávame vždy aj na Instagram.</p>
+<p class="dim" style="margin-bottom:24px">Platí od 7. 9. 2026. Vyber si disciplínu a uvidíš len svoje tréningy. Aktuálne zmeny dávame vždy aj na <a href="https://www.instagram.com/mma.academy.trencin" rel="noopener" style="color:inherit">Instagram</a>.</p>
 <div id="filters" role="group" aria-label="Filter rozvrhu podľa disciplíny"></div>
 <div id="days" class="reveal grid" style="--min:170px;--gap:12px"></div>
 </div>
@@ -451,10 +454,16 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FF
 </div>
 <script>
 (function () {
-  var M = { type: 'mma', name: 'MMA' };
-  var G = { type: 'grap', name: 'Grappling / Wrestling' };
-  var Y = { type: 'youth', name: 'MMA Academy Youth' };
-  var week = [['Pondelok', [Y, M]], ['Utorok', [G, M]], ['Streda', [Y, M]], ['Štvrtok', [G, M]], ['Piatok', [M]]];
+  // Rozvrh platný od 7. 9. 2026 (podľa príspevku na Instagrame). types = filtre, pod ktorými sa tréning zobrazí.
+  function t(time, name, detail, level, types) { return { time: time, name: name, detail: detail, level: level, types: types }; }
+  var ALL = 'All level class', COMP = 'Competition class', KIDS = 'Deti';
+  var week = [
+    ['Pondelok', [t('19:00', 'MMA', 'Striking', ALL, ['mma'])]],
+    ['Utorok', [t('11:00', 'MMA', null, COMP, ['mma']), t('15:30', 'MMA Youth Academy', null, KIDS, ['youth']), t('18:30', 'MMA', 'Wrestling', ALL, ['mma', 'grap'])]],
+    ['Streda', [t('11:00', 'Wrestling', 'Sparingy', ALL, ['grap']), t('19:00', 'Grappling', null, ALL, ['grap'])]],
+    ['Štvrtok', [t('9:00', 'MMA', null, COMP, ['mma']), t('15:30', 'MMA Youth Academy', null, KIDS, ['youth']), t('18:30', 'MMA', 'Striking', ALL, ['mma'])]],
+    ['Piatok', [t('15:30', 'MMA Youth Academy', null, KIDS, ['youth']), t('17:30', 'Grappling', null, ALL, ['grap'])]]
+  ];
   var filters = [['all', 'Všetko'], ['mma', 'MMA'], ['grap', 'Grappling / Wrestling'], ['youth', 'Youth']];
   var cur = 'all';
   var fEl = document.getElementById('filters'), dEl = document.getElementById('days');
@@ -471,10 +480,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FF
     var frag = document.createDocumentFragment();
     week.forEach(function (d) {
       var card = el('div', null, 'day'); card.appendChild(el('h3', d[0]));
-      var list = d[1].filter(function (s) { return cur === 'all' || s.type === cur; });
+      var list = d[1].filter(function (s) { return cur === 'all' || s.types.indexOf(cur) !== -1; });
       list.forEach(function (s) {
-        var row = el('div'); row.appendChild(el('strong', '[ČAS]')); row.appendChild(el('br'));
-        row.appendChild(document.createTextNode(s.name)); row.appendChild(el('br')); row.appendChild(el('small', '[Úroveň]'));
+        var row = el('div', null, 'slot'); row.appendChild(el('strong', s.time));
+        row.appendChild(el('span', s.detail ? s.name + ' – ' + s.detail : s.name)); row.appendChild(el('small', s.level));
         card.appendChild(row);
       });
       if (!list.length) card.appendChild(el('div', 'Bez tréningu', 'none'));
