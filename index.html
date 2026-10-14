@@ -132,6 +132,15 @@ main,.site-foot{position:relative}
 .assure{display:inline-flex;align-items:center;gap:10px;background:rgba(46,160,90,.12);border:1px solid rgba(76,200,120,.35);color:#8EE6AE;border-radius:999px;padding:9px 20px;font-size:15px}
 .assure svg{width:17px;height:17px;flex:none}
 @media (max-width:760px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:64px 18px 48px}}
+/* Ringový gong: klik = úder do zvona (zvuk sa skladá vo Web Audio, bez zvukového súboru). */
+.gong{position:absolute;top:18px;right:18px;width:76px;height:76px;padding:0;border:0;border-radius:50%;background:transparent;cursor:pointer;filter:drop-shadow(0 8px 18px rgba(0,0,0,.55))}
+.gong svg{width:100%;height:100%;display:block;transform-origin:50% 50%}
+.gong:hover svg{transform:scale(1.06)}
+.gong-hint{position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:4px;font-family:var(--display);font-size:16px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.8);white-space:nowrap;pointer-events:none}
+@keyframes gongHit{0%{transform:rotate(0)}15%{transform:rotate(-9deg) scale(.94)}35%{transform:rotate(7deg)}55%{transform:rotate(-4deg)}75%{transform:rotate(2deg)}100%{transform:rotate(0)}}
+@keyframes gongRing{from{opacity:.75;transform:scale(1)}to{opacity:0;transform:scale(2.2)}}
+@media (prefers-reduced-motion:no-preference){.gong svg{transition:transform .2s ease}.gong.hit svg{animation:gongHit .6s ease-out}.gong.hit::after{content:"";position:absolute;inset:0;border-radius:50%;border:3px solid #E8B64C;animation:gongRing .7s ease-out both;pointer-events:none}}
+@media (max-width:760px){.gong{top:10px;right:10px;width:50px;height:50px}.gong-hint{display:none}}
 
 /* Marquee */
 .marquee{margin-top:56px;background:var(--grad);overflow:hidden;padding:16px 0;font-family:var(--display);font-weight:600;font-size:30px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;line-height:1}
@@ -375,6 +384,15 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FF
 <div class="wrap hero-wrap">
 <section id="top" class="hero">
 <img class="hero-bg" src="assets/foto/hero-klietka.webp" width="1100" height="1400" fetchpriority="high" alt="">
+<button type="button" class="gong" id="gong" aria-label="Udrieť do ringového gongu"><svg viewBox="0 0 100 100" aria-hidden="true">
+<defs><radialGradient id="gong-brass" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#FFF1B8"/><stop offset=".35" stop-color="#E8B64C"/><stop offset=".75" stop-color="#A8711E"/><stop offset="1" stop-color="#5E3A0C"/></radialGradient></defs>
+<circle cx="50" cy="50" r="48" fill="#1B1B1D" stroke="#3A3A3E" stroke-width="2"/>
+<circle cx="50" cy="50" r="40" fill="url(#gong-brass)"/>
+<circle cx="50" cy="50" r="29" fill="none" stroke="rgba(94,58,12,.45)" stroke-width="1.5"/>
+<circle cx="50" cy="50" r="18" fill="none" stroke="rgba(94,58,12,.35)" stroke-width="1.2"/>
+<circle cx="50" cy="50" r="7" fill="#5E3A0C"/><circle cx="48" cy="48" r="3" fill="#E8B64C"/>
+<path d="M82 86L63 63" stroke="#2A2A2E" stroke-width="6" stroke-linecap="round"/><circle cx="62" cy="62" r="5" fill="#D0213D"/>
+</svg><span class="gong-hint">Gong!</span></button>
 <span class="badge hero-in d1"><svg aria-hidden="true"><use href="#i-fire"/></svg>Nábor nových členov · Trenčín</span>
 <h1 class="hero-in d2">Trénuj MMA<br>v <span>Trenčíne</span></h1>
 <p class="hero-sub hero-in d3">Od prvého tréningu až po zápas v klietke. MMA a grappling pre <strong>začiatočníkov</strong>, pokročilých aj mládež.</p>
@@ -728,6 +746,28 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #FF
 
   var bar = document.getElementById('topbar');
   bar.querySelector('.topbar-x').addEventListener('click', function () { bar.remove(); });
+
+  // Ringový gong: tri údery „ding-ding-ding“ ako na začiatku kola. Zvon = niekoľko neharmonických tónov, ktoré doznievajú.
+  var gong = document.getElementById('gong'), Ctx = window.AudioContext || window.webkitAudioContext, actx;
+  function strike(t) {
+    var out = actx.createGain(); out.gain.value = .32; out.connect(actx.destination);
+    [[1, 1, 2.6], [2.76, .5, 1.6], [5.4, .28, .9], [8.93, .16, .5], [1.006, .6, 2.4]].forEach(function (p) {
+      var o = actx.createOscillator(), g = actx.createGain();
+      o.type = 'sine'; o.frequency.value = 760 * p[0];
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(p[1], t + .004); g.gain.exponentialRampToValueAtTime(.0001, t + p[2]);
+      o.connect(g); g.connect(out); o.start(t); o.stop(t + p[2] + .05);
+    });
+  }
+  gong.addEventListener('click', function () {
+    if (Ctx) {
+      actx = actx || new Ctx();
+      if (actx.state === 'suspended') actx.resume();
+      var now = actx.currentTime + .02;
+      [0, .32, .64].forEach(function (d) { strike(now + d); });
+    }
+    gong.classList.remove('hit'); void gong.offsetWidth; gong.classList.add('hit');
+  });
+  gong.addEventListener('animationend', function (e) { if (e.target === gong) gong.classList.remove('hit'); });
 
   var form = document.getElementById('lead'), status = document.getElementById('lead-status');
   form.addEventListener('submit', function (e) {
